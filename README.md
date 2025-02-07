@@ -49,7 +49,7 @@ La empresa E-Sport ha encargado el desarrollo de una aplicación para gestionar 
 - Ver el informe de los equipos participantes.
 
 - Consultar los resultados de la última jornada.
-## Authors
+## Autores
 
 Eneko Yranzo
 
