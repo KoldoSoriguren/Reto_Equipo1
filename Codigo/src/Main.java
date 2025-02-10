@@ -1,7 +1,24 @@
+import Controlador.CompeticionController;
+import Controlador.EquipoController;
+import Controlador.JornadaController;
+import Controlador.JugadorController;
+import Modelo.*;
+
 import javax.swing.*;
 import java.util.Arrays;
 
 public class Main {
+
+    private static JugadorController jugadorController;
+    private static EquipoController equipoController;
+    private static JornadaController jornadaController;
+    private static CompeticionController competicionController;
+
+    private static JugadorDAO jugadorDAO;
+    private static EquipoDAO equipoDAO;
+    private static JornadaDAO jornadaDAO;
+    private static CompeticionDAO competicionDAO;
+
     public static void main(String[] args) {
         try {
             crearObjetos();
@@ -13,7 +30,17 @@ public class Main {
     }
 
     public static void crearObjetos() {
+        jugadorDAO = new JugadorDAO();
+        jugadorController = new JugadorController(jugadorDAO);
 
+        equipoDAO = new EquipoDAO();
+        equipoController = new EquipoController(equipoDAO);
+
+        jornadaDAO = new JornadaDAO();
+        jornadaController = new JornadaController(jornadaDAO);
+
+        competicionDAO = new CompeticionDAO();
+        competicionController = new CompeticionController(competicionDAO);
     }
 
     public static void menu() {
