@@ -1,12 +1,13 @@
 package Controlador;
 
 import Modelo.EquipoDAO;
-import Modelo.JugadorDAO;
 
 public class EquipoController {
-    private EquipoDAO eqiopoDAO;
+    private EquipoDAO equipoDAO;
 
     public EquipoController(EquipoDAO eqiopoDAO) {
-        this.eqiopoDAO = eqiopoDAO;
+        this.equipoDAO = eqiopoDAO;
     }
+
+
 }
