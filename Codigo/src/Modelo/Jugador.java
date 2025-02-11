@@ -37,7 +37,7 @@ public class Jugador {
         throw new IllegalArgumentException("Rol no válido: " + rolIngresado);
     }
 
-//    Getter and Setter:
+    //    Getter and Setter:
     public String getCodJugador() {
         return codJugador;
     }
