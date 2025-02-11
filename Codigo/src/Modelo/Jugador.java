@@ -11,6 +11,7 @@ public class Jugador {
     private String nickname;
     private Roles rol;
     private double sueldo;
+    private Equipo equipo;
 
     public Jugador(String codJugador, String nombre, String apellido, String nacionalidad, LocalDate fechaNacimiento,
                    String nickname, Roles rol, double sueldo) {

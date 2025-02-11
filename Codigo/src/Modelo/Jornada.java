@@ -1,11 +1,13 @@
 package Modelo;
 
+import java.lang.reflect.Array;
 import java.util.Date;
 
 public class Jornada {
     private String cod_jornada;
     private String resultado;
     private Date fecha_jornada;
+    private Competicion competicion;
 
     public Jornada() {
     }

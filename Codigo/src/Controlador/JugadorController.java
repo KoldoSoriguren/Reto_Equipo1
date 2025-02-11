@@ -36,7 +36,7 @@ public class JugadorController {
         error=true;
         do {
             String nickname=JOptionPane.showInputDialog("Ingrese el nickname");
-                
+
         }while(error);
     }
 

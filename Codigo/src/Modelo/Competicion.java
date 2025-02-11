@@ -7,7 +7,7 @@ public class Competicion {
     private Date fecha_compe;
     private String estado;
     private Date fecha_fin;
-
+    private Jornada jornada;
     public Competicion() {
 
     }
