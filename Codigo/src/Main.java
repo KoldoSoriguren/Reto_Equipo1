@@ -45,7 +45,7 @@ public class Main {
         competicionController = new CompeticionController(competicionDAO);
 
         enfrentamientoDAO = new EnfrentamientoDAO();
-        enfrentamientoController = new EnfrentamientoController(enfrentamientoDAO):
+        enfrentamientoController = new EnfrentamientoController(enfrentamientoDAO);
     }
 
     public static void menu() {

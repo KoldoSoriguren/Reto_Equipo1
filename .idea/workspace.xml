@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9ccec1b-0f2d-4b80-a895-c8cf3e4497a8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codigo/src/Controlador/JornadaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Codigo/src/Controlador/JornadaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codigo/src/Excepción/DatoNoValido.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Reto_Equipo1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Codigo/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Codigo/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codigo/src/Modelo/EquipoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Codigo/src/Modelo/EquipoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codigo/src/Modelo/JornadaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Codigo/src/Modelo/JornadaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codigo/src/Modelo/JugadorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Codigo/src/Modelo/JugadorDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +20,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Codigo/src/Main.java" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -44,7 +46,11 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "proofread",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "profiler.jvm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -73,7 +79,8 @@
       <workItem from="1739181464143" duration="12000" />
       <workItem from="1739181490916" duration="9000" />
       <workItem from="1739258349698" duration="18000" />
-      <workItem from="1739271148226" duration="1272000" />
+      <workItem from="1739271148226" duration="1490000" />
+      <workItem from="1739272681049" duration="241000" />
     </task>
     <servers />
   </component>
