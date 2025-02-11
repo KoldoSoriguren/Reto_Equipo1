@@ -71,9 +71,28 @@ public class JugadorController {
         return null;
     }
     public void eliminarjug(){
-        String codigo=JOptionPane.showInputDialog("Ingrese el codigo del jugador que quieres borrar");
-        String mensaje= jugadorDAO.eliminarJugador(codigo);
+        String cod=JOptionPane.showInputDialog("Ingrese el codigo del jugador que quieres borrar");
+        String mensaje= jugadorDAO.eliminarJugador(cod);
         JOptionPane.showMessageDialog(null,mensaje);
+
+    }
+    public void mostrarjug(){
+        String cod = JOptionPane.showInputDialog("Ingrese el codigo del jugador que quieres ver");
+        Jugador j = jugadorDAO.mostrarJugador(cod);
+        if(j==null){
+            JOptionPane.showMessageDialog(null,"El jugador no existe");
+        }else{
+            JOptionPane.showMessageDialog(null,j.toString());
+        }
+    }
+    public void modificarjug(){
+        String cod = JOptionPane.showInputDialog("Ingrese el codigo del jugador");
+        String propiedad= JOptionPane.showInputDialog("Ingrese el propiedad del jugador que quieres cambiar");
+        String valor=JOptionPane.showInputDialog("Ingrese el valor");
+
+        String mensaje=jugadorDAO.modijug(cod,propiedad,valor);
+
+
 
     }
 
