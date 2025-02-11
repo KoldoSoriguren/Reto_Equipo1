@@ -13,6 +13,7 @@ public class JugadorController {
         this.jugadorDAO = jugadorDAO;
     }
     public void añadirJugador() {
+        Jugador j = new Jugador();
         boolean error= true;
         do {
             String codigo=JOptionPane.showInputDialog("Ingrese el codigo del jugador");
@@ -31,6 +32,11 @@ public class JugadorController {
             }else{
                 JOptionPane.showMessageDialog(null, "El nombre del jugador no es valido");
             }
+        }while(error);
+        error=true;
+        do {
+            String nickname=JOptionPane.showInputDialog("Ingrese el nickname");
+                
         }while(error);
     }
 
