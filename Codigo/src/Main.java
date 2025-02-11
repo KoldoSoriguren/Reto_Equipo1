@@ -114,23 +114,10 @@ public class Main {
                                                     int opcion010 = Arrays.asList(menuOptsCrudOptsJugador).indexOf(opcionStr010);
 
                                                     switch (opcion010) {
-                                                        case 0: {// Alta adjustor
-                                                            equipoController.insertar();
-                                                        }
-                                                        break;
-
-                                                        case 1: { // Baja Jugador
-                                                            equipoController.borrar();
-                                                        }break;
-
-                                                        case 2: { // Modificar jugador
-                                                            equipoController.modificar();
-                                                        }break;
-
-                                                        case 3: { // Mostrar jugador
-                                                            equipoController.mostrar();
-                                                        }break;
-
+                                                        case 0-> jugadorController.solicitarValidarDatos();
+                                                        case 1-> jugadorController.eliminarjug();
+//                                                        case 2 -> // Modificar jugador
+                                                        case 3 -> jugadorController.mostrarjug();
                                                     }
                                                 }
                                             }
@@ -143,10 +130,18 @@ public class Main {
                                                     int opcion011 = Arrays.asList(menuOptsCrudOptsEquipo).indexOf(opcionStr011);
 
                                                     switch (opcion011) {
-//                                                        case 0 -> // Alta Equipo
-//                                                        case 1 -> // Baja Equipo
-//                                                        case 2 -> // Modificar Equipo
-//                                                        case 3 -> // Mostrar Equipo
+                                                        case 0: {// Alta adjustor
+                                                            equipoController.insertar();
+                                                        }break;
+                                                        case 1: { // Baja Jugador
+                                                            equipoController.borrar();
+                                                        }break;
+                                                        case 2: { // Modificar jugador
+                                                            equipoController.modificar();
+                                                        }break;
+                                                        case 3: { // Mostrar jugador
+                                                            equipoController.mostrar();
+                                                        }break;
                                                     }
                                                 }
                                             }
