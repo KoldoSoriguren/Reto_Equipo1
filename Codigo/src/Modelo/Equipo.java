@@ -12,6 +12,12 @@ public class Equipo {
     public Equipo() {
     }
 
+    public Equipo(String codEquipo, String nombreEquipo, LocalDate fecha_fun) {
+        this.codEquipo = codEquipo;
+        this.nombreEquipo = nombreEquipo;
+        this.fecha_fun = fecha_fun;
+    }
+
     public Equipo(String codEquipo, String nombreEquipo, LocalDate fecha_fun, ArrayList<Jugador> jugadores) {
         this.codEquipo = codEquipo;
         this.nombreEquipo = nombreEquipo;

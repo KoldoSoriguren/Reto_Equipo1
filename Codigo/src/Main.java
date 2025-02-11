@@ -24,7 +24,7 @@ public class Main {
             crearObjetos();
             menu();
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
@@ -46,39 +46,39 @@ public class Main {
     public static void menu() {
         boolean terminar = false;
 
-        String [] menuOptsRoles = {
+        String[] menuOptsRoles = {
                 "Administrador", "Usuario", "Cerrar programa"
         };
 
-        String [] menuOptsTipoAdmin = {
+        String[] menuOptsTipoAdmin = {
                 "CRUD", "Cerrar Etapa", "Generar Calendario", "Introducir resultados", "Ver todos los informes"
         };
 
-        String [] menuOptsCrudAdmin = {
+        String[] menuOptsCrudAdmin = {
                 "Jugadores", "Equipos", "Enfrentamiento", "Jornada", "Competición"
         };
 
-        String [] menuOptsCrudOptsJugador = {
+        String[] menuOptsCrudOptsJugador = {
                 "Alta Jugador", "Baja Jugador", "Modificación Jugador", "Mostrar Jugador"
         };
 
-        String [] menuOptsCrudOptsEquipo = {
+        String[] menuOptsCrudOptsEquipo = {
                 "Alta Equipo", "Baja Equipo", "Modificación Equipo", "Mostrar Equipo"
         };
 
-        String [] menuOptsCrudOptsEnfrentamiento = {
+        String[] menuOptsCrudOptsEnfrentamiento = {
                 "Nuevo Enfrentamiento", "Borrar Enfrentamiento", "Modificar Enfrentamiento", "Mostrar Enfrentamiento"
         };
 
-        String [] menuOptsCrudOptsJornada = {
+        String[] menuOptsCrudOptsJornada = {
                 "Nueva Jornada", "Borrar Jornada", "Modificar Jornada", "Mostrar Jornada"
         };
 
-        String [] menuOptsCrudOptsCompeticion = {
+        String[] menuOptsCrudOptsCompeticion = {
                 "Nueva Competición", "Borrar Competición", "Modificar Competición", "Mostrar Competición"
         };
 
-        String [] menuOptsTipoUsuario = {
+        String[] menuOptsTipoUsuario = {
                 "Visualizar equipos con sus jornadas", "Visualizar resultados"
         };
 
@@ -97,7 +97,7 @@ public class Main {
                         if (opcionStr0 != null) {
                             int opcion0 = Arrays.asList(menuOptsTipoAdmin).indexOf(opcionStr0);
 
-                           switch (opcion0) {
+                            switch (opcion0) {
                                 case 0: { // CRUD
                                     String opcionStr01 = (String) JOptionPane.showInputDialog(null, "Selecciona una opción",
                                             "Menú - Administrador - CRUD", JOptionPane.QUESTION_MESSAGE, null, menuOptsCrudAdmin, menuOptsCrudAdmin[0]);
@@ -120,7 +120,8 @@ public class Main {
                                                         case 3 -> jugadorController.mostrarjug();
                                                     }
                                                 }
-                                            } break;
+                                            }
+                                            break;
                                             case 1: {
                                                 String opcionStr011 = (String) JOptionPane.showInputDialog(null, "Selecciona una opción",
                                                         "Menú - Administrador - CRUD - Equipo", JOptionPane.QUESTION_MESSAGE, null, menuOptsCrudOptsEquipo, menuOptsCrudOptsEquipo[0]);
@@ -129,13 +130,22 @@ public class Main {
                                                     int opcion011 = Arrays.asList(menuOptsCrudOptsEquipo).indexOf(opcionStr011);
 
                                                     switch (opcion011) {
-//                                                        case 0 -> // Alta Equipo
-//                                                        case 1 -> // Baja Equipo
-//                                                        case 2 -> // Modificar Equipo
-//                                                        case 3 -> // Mostrar Equipo
+                                                        case 0: {// Alta adjustor
+                                                            equipoController.insertar();
+                                                        }break;
+                                                        case 1: { // Baja Jugador
+                                                            equipoController.borrar();
+                                                        }break;
+                                                        case 2: { // Modificar jugador
+                                                            equipoController.modificar();
+                                                        }break;
+                                                        case 3: { // Mostrar jugador
+                                                            equipoController.mostrar();
+                                                        }break;
                                                     }
                                                 }
-                                            } break;
+                                            }
+                                            break;
                                             case 2: {
                                                 String opcionStr012 = (String) JOptionPane.showInputDialog(null, "Selecciona una opción",
                                                         "Menú - Administrador - CRUD - Enfrentamiento", JOptionPane.QUESTION_MESSAGE, null, menuOptsCrudOptsEnfrentamiento, menuOptsCrudOptsEnfrentamiento[0]);
@@ -150,7 +160,8 @@ public class Main {
 //                                                        case 3 -> // Mostrar Enfrentamiento
                                                     }
                                                 }
-                                            } break;
+                                            }
+                                            break;
                                             case 3: {
                                                 String opcionStr013 = (String) JOptionPane.showInputDialog(null, "Selecciona una opción",
                                                         "Menú - Administrador - CRUD - Jornada", JOptionPane.QUESTION_MESSAGE, null, menuOptsCrudOptsJornada, menuOptsCrudOptsJornada[0]);
@@ -165,7 +176,8 @@ public class Main {
 //                                                        case 3 -> // Mostrar Jornada
                                                     }
                                                 }
-                                            } break;
+                                            }
+                                            break;
                                             case 4: {
                                                 String opcionStr011 = (String) JOptionPane.showInputDialog(null, "Selecciona una opción",
                                                         "Menú - Administrador - CRUD - Competición", JOptionPane.QUESTION_MESSAGE, null, menuOptsCrudOptsCompeticion, menuOptsCrudOptsCompeticion[0]);
@@ -180,18 +192,20 @@ public class Main {
 //                                                        case 3 -> // Mostrar Competición
                                                     }
                                                 }
-                                            } break;
                                             }
+                                            break;
                                         }
                                     }
                                 }
+                            }
 //                                case 1: {} // Cerrar Etapa
 //                                case 2: {} // Generar Calendario
 //                                case 3: {} // Introducir Resultados
 //                                case 4: {} // Ver todos los informes
 //                            }
                         }
-                    } break;
+                    }
+                    break;
                     case 1: { // Menu para usuario
                         String opcionStr1 = (String) JOptionPane.showInputDialog(null, "Selecciona una opción",
                                 "Menú - Cliente", JOptionPane.QUESTION_MESSAGE, null, menuOptsTipoUsuario, menuOptsTipoUsuario[0]);
@@ -204,11 +218,15 @@ public class Main {
 //                                case 1 -> // Visualizar resultados
 //                            }
                         }
-                    } break;
+                    }
+                    break;
                     case 2: {
                         terminar = true;
-                    }break;
-                    default: {JOptionPane.showMessageDialog(null, "Opción no válida");}
+                    }
+                    break;
+                    default: {
+                        JOptionPane.showMessageDialog(null, "Opción no válida");
+                    }
                 }
             } else {
                 terminar = true;
