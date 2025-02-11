@@ -117,7 +117,7 @@ public class Main {
                                                         case 0-> jugadorController.solicitarValidarDatos();
                                                         case 1-> jugadorController.eliminarjug();
 //                                                        case 2 -> // Modificar jugador
-//                                                        case 3 -> // Mostrar jugador
+                                                        case 3 -> jugadorController.mostrarjug();
                                                     }
                                                 }
                                             } break;

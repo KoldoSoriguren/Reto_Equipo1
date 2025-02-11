@@ -23,4 +23,20 @@ public class JugadorDAO {
         return mensaje;
 
     }
+    public Jugador mostrarJugador(String cod) {
+        Jugador j = new Jugador();
+        Optional<Jugador> jug = jugadores.stream().filter(jugador -> jugador.getCodJugador().equals(cod)).findFirst();
+        if (jug.isPresent()) {
+            j=jug.get();
+        }else{
+            j=null;
+        }
+        return j;
+    }
+    public String modijug(String cod, String valor, String propiedad){
+        Optional<Jugador> jug= jugadores.stream().filter(jugador -> jugador.getCodJugador().equals(cod)).findFirst();
+        if (jug.isPresent()) {
+
+        }
+    }
 }
