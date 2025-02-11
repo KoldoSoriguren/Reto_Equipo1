@@ -4,44 +4,47 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class JugadorDAO {
-    private ArrayList<Jugador> jugadores;
+    private final ArrayList<Jugador> listaJugadores;
 
     public JugadorDAO() {
-        jugadores = new ArrayList<>();
+        listaJugadores = new ArrayList<>();
     }
 
     public void agregarJugador(Jugador j) {
-        jugadores.add(j);
+        listaJugadores.add(j);
     }
 
     public String eliminarJugador(String cod) {
-        String mensaje="";
-        Optional<Jugador> jug =jugadores.stream().filter(jugador -> jugador.getCodJugador().equals(cod)).findFirst();
-        if (jug.isPresent()) {
-            jugadores.remove(jug.get());
-            mensaje="Jugador eliminado";
+        String mensaje;
+
+        Optional<Jugador> jugador = listaJugadores.stream().filter(jugadorABuscar -> jugadorABuscar.getCodJugador().equals(cod)).findFirst();
+        if (jugador.isPresent()) {
+            listaJugadores.remove(jugador.get());
+            mensaje = "Jugador eliminado";
         }else {
-            mensaje="No existe el jugador";
+            mensaje = "No existe el jugador";
         }
         return mensaje;
 
     }
 
     public Jugador mostrarJugador(String cod) {
-        Jugador j = new Jugador();
-        Optional<Jugador> jug = jugadores.stream().filter(jugador -> jugador.getCodJugador().equals(cod)).findFirst();
-        if (jug.isPresent()) {
-            j=jug.get();
+        Jugador j;
+
+        Optional<Jugador> jugador = listaJugadores.stream().filter(jugadorABuscar -> jugadorABuscar.getCodJugador().equals(cod)).findFirst();
+        if (jugador.isPresent()) {
+            j = jugador.get();
         }else{
-            j=null;
+            j = null;
         }
         return j;
     }
 
-    public String modijug(String cod, String valor, String propiedad){
-        Optional<Jugador> jug= jugadores.stream().filter(jugador -> jugador.getCodJugador().equals(cod)).findFirst();
-        if (jug.isPresent()) {
+    public String modJugador(String cod, String valor, String propiedad){
+        Optional<Jugador> jugador = listaJugadores.stream().filter(jugadorABuscar -> jugadorABuscar.getCodJugador().equals(cod)).findFirst();
+        if (jugador.isPresent()) {
 
         }
+        return null; // Temporal, WIP
     }
 }

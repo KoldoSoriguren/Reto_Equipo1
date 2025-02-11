@@ -1,6 +1,6 @@
 package Controlador;
 
-import Excepción.DatoNoValido;
+import Excepcion.DatoNoValido;
 import Modelo.Equipo;
 import Modelo.EquipoDAO;
 import javax.swing.*;
@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class EquipoController {
-    private final EquipoDAO equipoDAO;
+    private EquipoDAO equipoDAO;
 
     public EquipoController() {}
 

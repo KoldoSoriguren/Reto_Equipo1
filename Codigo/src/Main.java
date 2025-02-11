@@ -1,7 +1,4 @@
-import Controlador.CompeticionController;
-import Controlador.EquipoController;
-import Controlador.JornadaController;
-import Controlador.JugadorController;
+import Controlador.*;
 import Modelo.*;
 
 import javax.swing.*;
@@ -119,10 +116,10 @@ public class Main {
                                                     int opcion010 = Arrays.asList(menuOptsCrudOptsJugador).indexOf(opcionStr010);
 
                                                     switch (opcion010) {
-                                                        case 0-> jugadorController.solicitarValidarDatos();
-                                                        case 1-> jugadorController.eliminarjug();
-//                                                        case 2 -> // Modificar jugador
-                                                        case 3 -> jugadorController.mostrarjug();
+                                                        case 0-> jugadorController.altaValidarDatosJugador(); // Alta jugador
+                                                        case 1-> jugadorController.eliminarJugador(); // Eliminar jugador
+                                                        case 2 -> jugadorController.modificarJugador(); // Modificar jugador
+                                                        case 3 -> jugadorController.mostrarJugador(); // Mostrar jugador
                                                     }
                                                 }
                                             }
@@ -135,16 +132,16 @@ public class Main {
                                                     int opcion011 = Arrays.asList(menuOptsCrudOptsEquipo).indexOf(opcionStr011);
 
                                                     switch (opcion011) {
-                                                        case 0: {// Alta adjustor
+                                                        case 0: {// Alta equipo
                                                             equipoController.insertar();
                                                         }break;
-                                                        case 1: { // Baja Jugador
+                                                        case 1: { // Baja equipo
                                                             equipoController.borrar();
                                                         }break;
-                                                        case 2: { // Modificar jugador
+                                                        case 2: { // Modificar equipo
                                                             equipoController.modificar();
                                                         }break;
-                                                        case 3: { // Mostrar jugador
+                                                        case 3: { // Mostrar equipo
                                                             equipoController.mostrar();
                                                         }break;
                                                     }
