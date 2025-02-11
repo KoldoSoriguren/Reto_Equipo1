@@ -17,7 +17,7 @@ public class JugadorController {
     public JugadorController(JugadorDAO jugadorDAO) {
         this.jugadorDAO = jugadorDAO;
     }
-    public Jugador solicitarValidarDatos(){
+    public void solicitarValidarDatos(){
         String codJugador=solicitarDatos("codJugador","Ingrese el código del jugador","^[0-9]{8}-[A-Z]$");
         String nombre=solicitarDatos("nombre","Ingrese el nombre del jugador","^[A-Z][a-z]*$");
         String apellido=solicitarDatos("apellido","Ingrese el apellido del jugador","^[A-Z][a-z]*$");
@@ -27,7 +27,9 @@ public class JugadorController {
         String rol=solicitarDatos("rol", "Ingrese el rol del jugador (iniciador, duelista, controlador, centinela):", "^[A-Za-z]+$");
         Roles roles=validarRol(rol);
         Double sueldo= Double.valueOf(solicitarDatos("sueldo","Ingrese el sueldo del jugador","^[0-9]+(\\.[0-9]{1,2})?$"));
-        return new Jugador(codJugador,nombre,apellido,nacionalidad,fechaNac,nickname,roles,sueldo);
+         Jugador j = new  Jugador(codJugador,nombre,apellido,nacionalidad,fechaNac,nickname,roles,sueldo);
+         jugadorDAO.agregarJugador(j);
+
     }
     public String solicitarDatos(String dato,String mensaje,String expresionRegular){
         String variable="";
@@ -68,4 +70,11 @@ public class JugadorController {
         }
         return null;
     }
+    public void eliminarjug(){
+        String codigo=JOptionPane.showInputDialog("Ingrese el codigo del jugador que quieres borrar");
+        String mensaje= jugadorDAO.eliminarJugador(codigo);
+        JOptionPane.showMessageDialog(null,mensaje);
+
+    }
+
 }
