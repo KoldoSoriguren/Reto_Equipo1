@@ -114,8 +114,8 @@ public class Main {
                                                     int opcion010 = Arrays.asList(menuOptsCrudOptsJugador).indexOf(opcionStr010);
 
                                                     switch (opcion010) {
-//                                                        case 0 -> // Alta adjustor
-//                                                        case 1 -> // Baja Jugador
+                                                        case 0-> jugadorController.solicitarValidarDatos();
+                                                        case 1-> jugadorController.eliminarjug();
 //                                                        case 2 -> // Modificar jugador
 //                                                        case 3 -> // Mostrar jugador
                                                     }
