@@ -5,12 +5,15 @@ import java.util.Optional;
 
 public class JugadorDAO {
     private ArrayList<Jugador> jugadores;
+
     public JugadorDAO() {
         jugadores = new ArrayList<>();
     }
+
     public void agregarJugador(Jugador j) {
         jugadores.add(j);
     }
+
     public String eliminarJugador(String cod) {
         String mensaje="";
         Optional<Jugador> jug =jugadores.stream().filter(jugador -> jugador.getCodJugador().equals(cod)).findFirst();
@@ -23,6 +26,7 @@ public class JugadorDAO {
         return mensaje;
 
     }
+
     public Jugador mostrarJugador(String cod) {
         Jugador j = new Jugador();
         Optional<Jugador> jug = jugadores.stream().filter(jugador -> jugador.getCodJugador().equals(cod)).findFirst();
@@ -33,6 +37,7 @@ public class JugadorDAO {
         }
         return j;
     }
+
     public String modijug(String cod, String valor, String propiedad){
         Optional<Jugador> jug= jugadores.stream().filter(jugador -> jugador.getCodJugador().equals(cod)).findFirst();
         if (jug.isPresent()) {

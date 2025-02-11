@@ -13,11 +13,13 @@ public class Main {
     private static EquipoController equipoController;
     private static JornadaController jornadaController;
     private static CompeticionController competicionController;
+    private static EnfrentamientoController enfrentamientoController;
 
     private static JugadorDAO jugadorDAO;
     private static EquipoDAO equipoDAO;
     private static JornadaDAO jornadaDAO;
     private static CompeticionDAO competicionDAO;
+    private static EnfrentamientoDAO enfrentamientoDAO;
 
     public static void main(String[] args) {
         try {
@@ -41,6 +43,9 @@ public class Main {
 
         competicionDAO = new CompeticionDAO();
         competicionController = new CompeticionController(competicionDAO);
+
+        enfrentamientoDAO = new EnfrentamientoDAO();
+        enfrentamientoController = new EnfrentamientoController(enfrentamientoDAO):
     }
 
     public static void menu() {

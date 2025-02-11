@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9ccec1b-0f2d-4b80-a895-c8cf3e4497a8" name="Changes" comment="" />
+    <list default="true" id="e9ccec1b-0f2d-4b80-a895-c8cf3e4497a8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codigo/src/Controlador/JornadaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Codigo/src/Controlador/JornadaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codigo/src/Excepción/DatoNoValido.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codigo/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Codigo/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codigo/src/Modelo/EquipoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Codigo/src/Modelo/EquipoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codigo/src/Modelo/JornadaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Codigo/src/Modelo/JornadaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codigo/src/Modelo/JugadorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Codigo/src/Modelo/JugadorDAO.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +20,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -21,27 +32,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Egibide/Reto/Fase 2/Código/Reto_Equipo1&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;proofread&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Eneko/Code/GitRepos/Reto_Equipo1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "proofread",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.189" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.189" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
       </set>
     </attachedChunks>
   </component>
@@ -62,6 +73,7 @@
       <workItem from="1739181464143" duration="12000" />
       <workItem from="1739181490916" duration="9000" />
       <workItem from="1739258349698" duration="18000" />
+      <workItem from="1739271148226" duration="1272000" />
     </task>
     <servers />
   </component>

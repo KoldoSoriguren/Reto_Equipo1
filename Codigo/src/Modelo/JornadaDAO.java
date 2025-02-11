@@ -39,7 +39,7 @@ public class JornadaDAO {
     }
 
     public void mostrarJornadas() {
-        StringBuilder mensajeFinal = new StringBuilder("📅 JORNADAS GENERADAS 📅\n\n");
+        StringBuilder mensajeFinal = new StringBuilder("JORNADAS GENERADAS\n\n");
         for (Jornada j : jornadas) {
             mensajeFinal.append(j.mostrarJornada()).append("\n");
         }
