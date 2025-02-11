@@ -35,14 +35,14 @@ public class Main {
         equipoDAO = new EquipoDAO();
         equipoController = new EquipoController(equipoDAO);
 
-        jornadaDAO = new JornadaDAO();
-        jornadaController = new JornadaController(jornadaDAO);
-
         competicionDAO = new CompeticionDAO();
         competicionController = new CompeticionController(competicionDAO);
 
         enfrentamientoDAO = new EnfrentamientoDAO();
         enfrentamientoController = new EnfrentamientoController(enfrentamientoDAO);
+
+        jornadaDAO = new JornadaDAO();
+        jornadaController = new JornadaController(jornadaDAO, equipoDAO, enfrentamientoDAO);
     }
 
     public static void menu() {
@@ -122,8 +122,7 @@ public class Main {
                                                         case 3 -> jugadorController.mostrarJugador(); // Mostrar jugador
                                                     }
                                                 }
-                                            }
-                                            break;
+                                            }break;
                                             case 1: {
                                                 String opcionStr011 = (String) JOptionPane.showInputDialog(null, "Selecciona una opción",
                                                         "Menú - Administrador - CRUD - Equipo", JOptionPane.QUESTION_MESSAGE, null, menuOptsCrudOptsEquipo, menuOptsCrudOptsEquipo[0]);
@@ -132,22 +131,21 @@ public class Main {
                                                     int opcion011 = Arrays.asList(menuOptsCrudOptsEquipo).indexOf(opcionStr011);
 
                                                     switch (opcion011) {
-                                                        case 0: {// Alta equipo
-                                                            equipoController.insertar();
+                                                        case 0: {
+                                                            equipoController.altaValidarDatosEquipo(); // Alta equipo
                                                         }break;
-                                                        case 1: { // Baja equipo
-                                                            equipoController.borrar();
+                                                        case 1: {
+                                                            equipoController.borrar(); // Baja equipo
                                                         }break;
-                                                        case 2: { // Modificar equipo
-                                                            equipoController.modificar();
+                                                        case 2: {
+                                                            equipoController.modificar(); // Modificar equipo
                                                         }break;
-                                                        case 3: { // Mostrar equipo
-                                                            equipoController.mostrar();
+                                                        case 3: {
+                                                            equipoController.mostrar(); // Mostrar equipo
                                                         }break;
                                                     }
                                                 }
-                                            }
-                                            break;
+                                            }break;
                                             case 2: {
                                                 String opcionStr012 = (String) JOptionPane.showInputDialog(null, "Selecciona una opción",
                                                         "Menú - Administrador - CRUD - Enfrentamiento", JOptionPane.QUESTION_MESSAGE, null, menuOptsCrudOptsEnfrentamiento, menuOptsCrudOptsEnfrentamiento[0]);

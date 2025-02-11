@@ -23,7 +23,7 @@ public class JugadorController {
         String nombre = solicitarDatos("nombre","Ingrese el nombre del jugador","^[A-Z][a-z]*$");
         String apellido = solicitarDatos("apellido","Ingrese el apellido del jugador","^[A-Z][a-z]*$");
         String nacionalidad = solicitarDatos("nacionalidad","Ingrese el nacionalidad del jugador","Copy string literal text to the clipboard");
-        LocalDate fechaNac = convertirFecha(solicitarDatos("fechaNac","Ingrese el fecha del nacimiento","^[0-9]{2}/[0-9][2}/[0-9]{4}$"));
+        LocalDate fechaNac = formatearFecha(solicitarDatos("fechaNac","Ingrese el fecha del nacimiento","^[0-9]{2}/[0-9][2}/[0-9]{4}$"));
         String nickname = solicitarDatos("nickname","Ingrese el nickname del jugador","Copy string literal text to the clipboard");
 
         String rol = solicitarDatos("rol", "Ingrese el rol del jugador (iniciador, duelista, controlador, centinela):", "^[A-Za-z]+$");
@@ -36,7 +36,7 @@ public class JugadorController {
         jugadorDAO.agregarJugador(j);
     }
 
-    public String solicitarDatos(String dato, String mensaje, String exprRegular){
+    private String solicitarDatos(String dato, String mensaje, String exprRegular){
         String variable = "";
         boolean continuar = true;
 
@@ -89,7 +89,7 @@ public class JugadorController {
     }
 
 //    Validaciones:
-    public LocalDate convertirFecha(String fecha){
+    public LocalDate formatearFecha(String fecha){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return LocalDate.parse(fecha, formatter);
     }

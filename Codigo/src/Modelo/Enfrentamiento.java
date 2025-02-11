@@ -1,31 +1,30 @@
 package Modelo;
 
-import java.lang.reflect.Array;
 import java.time.LocalTime;
 
 public class Enfrentamiento {
-    private String cod_emfrentamiento;
+    private String codEnfrentamiento;
     private String string;
     private LocalTime hora;
     private Equipo equipo1;
     private Equipo equipo2;
+
     public Enfrentamiento() {
     }
 
-    public Enfrentamiento(String cod_emfrentamiento, LocalTime hora, String string, Equipo equipo1, Equipo equipo2) {
-        this.cod_emfrentamiento = cod_emfrentamiento;
-        this.hora = hora;
-        this.string = string;
+    public Enfrentamiento(String codEnfrentamiento, Equipo equipo1, Equipo equipo2, LocalTime hora) {
+        this.codEnfrentamiento = codEnfrentamiento;
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
+        this.hora = hora;
     }
 
-    public String getCod_emfrentamiento() {
-        return cod_emfrentamiento;
+    public String getCodEnfrentamiento() {
+        return codEnfrentamiento;
     }
 
-    public void setCod_emfrentamiento(String cod_emfrentamiento) {
-        this.cod_emfrentamiento = cod_emfrentamiento;
+    public void setCodEnfrentamiento(String codEnfrentamiento) {
+        this.codEnfrentamiento = codEnfrentamiento;
     }
 
     public String getString() {

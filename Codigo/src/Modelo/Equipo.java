@@ -6,22 +6,22 @@ import java.util.ArrayList;
 public class Equipo {
     private String codEquipo;
     private String nombreEquipo;
-    private LocalDate fecha_fun;
+    private LocalDate fechaFund;
     private ArrayList<Jugador> jugadores;
 
     public Equipo() {
     }
 
-    public Equipo(String codEquipo, String nombreEquipo, LocalDate fecha_fun) {
+    public Equipo(String codEquipo, String nombreEquipo, LocalDate fechaFund) {
         this.codEquipo = codEquipo;
         this.nombreEquipo = nombreEquipo;
-        this.fecha_fun = fecha_fun;
+        this.fechaFund = fechaFund;
     }
 
-    public Equipo(String codEquipo, String nombreEquipo, LocalDate fecha_fun, ArrayList<Jugador> jugadores) {
+    public Equipo(String codEquipo, String nombreEquipo, LocalDate fechaFund, ArrayList<Jugador> jugadores) {
         this.codEquipo = codEquipo;
         this.nombreEquipo = nombreEquipo;
-        this.fecha_fun = fecha_fun;
+        this.fechaFund = fechaFund;
         this.jugadores = jugadores;
     }
 
@@ -41,12 +41,12 @@ public class Equipo {
         this.nombreEquipo = nombreEquipo;
     }
 
-    public LocalDate getFecha_fun() {
-        return fecha_fun;
+    public LocalDate getFechaFund() {
+        return fechaFund;
     }
 
-    public void setFecha_fun(LocalDate fecha_fun) {
-        this.fecha_fun = fecha_fun;
+    public void setFechaFund(LocalDate fechaFund) {
+        this.fechaFund = fechaFund;
     }
 
     public ArrayList<Jugador> getJugadores() {

@@ -10,7 +10,7 @@ public class Jornada {
     private String resultado;
     private Date fechaJornada;
     private Competicion competicion;
-    private List<Enfrentamiento> enfrentamientos;
+    private List<Enfrentamiento> ListaEnfrentamientos;
 
     public Jornada() {
     }
@@ -24,9 +24,14 @@ public class Jornada {
     public Jornada(String codJornada, LocalDate fecha) {
         this.codJornada = codJornada;
         this.fechaJornada = fechaJornada;
-        this.enfrentamientos = new ArrayList<>();
+        this.ListaEnfrentamientos = new ArrayList<>();
     }
 
+    public void addEnfrentamiento(Enfrentamiento enfrentamiento) {
+        ListaEnfrentamientos.add(enfrentamiento);
+    }
+
+//  Getter and Setter
     public String getCod_jornada() {
         return codJornada;
     }
@@ -51,9 +56,17 @@ public class Jornada {
         this.resultado = resultado;
     }
 
+    public List<Enfrentamiento> getListaEnfrentamientos() {
+        return ListaEnfrentamientos;
+    }
+
+    public void setListaEnfrentamientos(List<Enfrentamiento> listaEnfrentamientos) {
+        ListaEnfrentamientos = listaEnfrentamientos;
+    }
+
     public String mostrarJornada() {
         StringBuilder sb = new StringBuilder("Jornada ").append(codJornada).append(" - Fecha: ").append(fechaJornada).append("\n");
-        for (Enfrentamiento e : enfrentamientos) {
+        for (Enfrentamiento e : ListaEnfrentamientos) {
             sb.append("- ").append(e).append("\n");
         }
         return sb.toString();

@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EnfrentamientoDAO {
-    private List<Enfrentamiento> enfrentamientos;
+    private List<Enfrentamiento> ListaEnfrentamientos;
 
     public EnfrentamientoDAO() {
-        enfrentamientos = new ArrayList<Enfrentamiento>();
+        ListaEnfrentamientos = new ArrayList<Enfrentamiento>();
     }
 
     public void guardarEnfrentamientos(Enfrentamiento e){
-        enfrentamientos.add(e);
+        ListaEnfrentamientos.add(e);
     }
 
-    public List<Enfrentamiento> getEnfrentamientos() {
-        return enfrentamientos;
+    public List<Enfrentamiento> getListaEnfrentamientos() {
+        return ListaEnfrentamientos;
     }
 }

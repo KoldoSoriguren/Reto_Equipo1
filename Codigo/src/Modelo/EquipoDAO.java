@@ -1,25 +1,21 @@
 package Modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EquipoDAO {
-    private List<Equipo> equipos;
+    private final List<Equipo> equipos;
 
-    public EquipoDAO(List<Equipo> equipos) {
-        this.equipos = new ArrayList();
-        equipos.add(new Equipo("E1", "Team A"));
-        equipos.add(new Equipo("E2", "Team B"));
-        equipos.add(new Equipo("E3", "Team C"));
-        equipos.add(new Equipo("E4", "Team D"));
-        equipos.add(new Equipo("E5", "Team E"));
+    public EquipoDAO() {
+        this.equipos = new ArrayList<>();
     }
 
-    public void insertar(Equipo equipos){
+    public void insertar(Equipo equipo){
         equipos.add(equipo);
     }
   
-    public void borrar(Equipo opcion_Elejida){
-        equipos.remove(opcion_Elejida);
+    public void borrar(Equipo opcionElegida){
+        equipos.remove(opcionElegida);
     }
   
     public List<Equipo> obtenerEquipos() {
