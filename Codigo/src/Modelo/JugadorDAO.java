@@ -78,8 +78,11 @@ public class JugadorDAO {
                 }break;
                 case "EQUIPO":{
                         String codiequip=JOptionPane.showInputDialog("Ingrese el codigo del equipo del jugador");
+                        equipoDAO.eliminarjugador(jugador.get(),codiequip);
                         jugador.get().setEquipo(equipoDAO.obtenerEquipo(codiequip));
                         equipoDAO.añadirjugador(jugador.get(),codiequip);
+
+
                 }break;
                 case "FECHANACIMIENTO":{
                     jugador.get().setFechaNacimiento(modifech());
@@ -92,6 +95,7 @@ public class JugadorDAO {
     }
     public Roles modirole(String cod, String valor, String propiedad){
        Roles rol=null;
+
        propiedad.toUpperCase();
        switch (valor) {
            case "DUELISTA":{

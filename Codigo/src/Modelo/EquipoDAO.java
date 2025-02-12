@@ -28,7 +28,10 @@ public class EquipoDAO {
     public void añadirjugador( Jugador jugador, String idEquipo){
         Optional<Equipo> buscarequip= equipos.stream().filter(equipoABuscar-> equipoABuscar.getCodEquipo().equals(idEquipo)).findFirst();
         buscarequip.get().añadirJugador(jugador);
-
-
+    }
+    public void eliminarjugador(Jugador jugador, String idEquipo){
+        Optional<Equipo> buscarequip= equipos.stream().filter(equipoABuscar-> equipoABuscar.getCodEquipo().equals(idEquipo)).findFirst();
+        buscarequip.get().eliminarJugador(jugador);
     }
 }
+

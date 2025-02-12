@@ -59,4 +59,7 @@ public class Equipo {
     public void añadirJugador(Jugador jugador) {
         this.jugadores.add(jugador);
     }
+    public void eliminarJugador(Jugador jugador) {
+        this.jugadores.remove(jugador);
+    }
 }
