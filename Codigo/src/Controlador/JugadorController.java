@@ -1,9 +1,7 @@
 package Controlador;
 
 import Excepcion.DatoNoValido;
-import Modelo.Jugador;
-import Modelo.JugadorDAO;
-import Modelo.Roles;
+import Modelo.*;
 
 import javax.swing.*;
 import java.time.LocalDate;
@@ -14,12 +12,13 @@ import java.util.regex.Pattern;
 
 public class JugadorController {
     private final JugadorDAO jugadorDAO;
-
     public JugadorController(JugadorDAO jugadorDAO) {
         this.jugadorDAO = jugadorDAO;
     }
 
     public void altaValidarDatosJugador(){
+        EquipoDAO equipoDAO = new EquipoDAO();
+        Equipo equip;
         String[] optsRoles = {
                 "DUELISTA", "INICIADOR", "CONTROLADOR", "CENTINELA"
         };
@@ -30,7 +29,6 @@ public class JugadorController {
         String nacionalidad = solicitarDatos("nacionalidad","Ingrese el nacionalidad del jugador",null);
         LocalDate fechaNac = formatearFecha(solicitarDatos("fechaNac","Ingrese el fecha del nacimiento dd/MM/yyyy",null));
         String nickname = solicitarDatos("nickname","Ingrese el nickname del jugador", null);
-
         String opcionStr = (String) JOptionPane.showInputDialog(null, "Selecciona rol",
                 "Menú", JOptionPane.QUESTION_MESSAGE, null, optsRoles, optsRoles[0]);
 
@@ -45,10 +43,23 @@ public class JugadorController {
             }
         }
 
+        boolean error = true;
+        do {
+            String codi =JOptionPane.showInputDialog("Ingresa el codigo de equipo que le quieres insertar al jugador");
+             equip=equipoDAO.obtenerEquipo(codi);
+            if (equip == null) {
+                JOptionPane.showMessageDialog(null, "El equipo no existe");
+            }else{
+                error = false;
+            }
+
+        }while (error);
+
+
         double sueldo = Double.parseDouble(solicitarDatos("sueldo", "Ingrese el sueldo del jugador", "^[0-9]+(\\.[0-9]{1,2})?$"));
 
-        Jugador j = new  Jugador(codJugador,nombre,apellido,nacionalidad,fechaNac,nickname,roles,sueldo);
-
+        Jugador j = new  Jugador(codJugador,nombre,apellido,nacionalidad,fechaNac,nickname,roles,sueldo,equip);
+        equipoDAO.añadirJugador(j,j.getEquipo().getCodEquipo());
         jugadorDAO.agregarJugador(j);
     }
 
