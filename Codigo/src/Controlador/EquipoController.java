@@ -28,34 +28,6 @@ public class EquipoController {
 
         equipoDAO.altaEquipo(equipo);
     }
-  
-    private String solicitarDatos(String dato, String mensaje, String exprRegular) {
-        String variable = "";
-        boolean terminar = false;
-
-        do {
-            try {
-                variable = JOptionPane.showInputDialog(mensaje);
-
-                if (variable.isEmpty()) {
-                    throw new DatoNoValido(dato + " es un campo obligatorio a rellenar");
-                }
-
-                Pattern pat = Pattern.compile(exprRegular);
-                Matcher mat = pat.matcher(variable);
-                if (!mat.matches()) {
-                    throw new DatoNoValido(dato + " no se ha introducido de forma correcta");
-                }
-
-                terminar = true;
-
-            } catch (DatoNoValido e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } while (!terminar);
-
-        return variable;
-    }
 
     public void modificar() {
         List<Equipo> equipos = equipoDAO.obtenerEquipos();
@@ -86,6 +58,7 @@ public class EquipoController {
         JOptionPane.showMessageDialog(null, equipos);
     }
 
+    //    Funciones:
     private LocalDate formatearFecha(String fecha) {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return LocalDate.parse(fecha, formato);
