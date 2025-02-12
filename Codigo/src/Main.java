@@ -116,13 +116,17 @@ public class Main {
                                                     int opcion010 = Arrays.asList(menuOptsCrudOptsJugador).indexOf(opcionStr010);
 
                                                     switch (opcion010) {
-                                                        case 0-> jugadorController.altaValidarDatosJugador(); // Alta jugador
-                                                        case 1-> jugadorController.eliminarJugador(); // Eliminar jugador
-                                                        case 2 -> jugadorController.modificarJugador(); // Modificar jugador
+                                                        case 0 ->
+                                                                jugadorController.altaValidarDatosJugador(); // Alta jugador
+                                                        case 1 ->
+                                                                jugadorController.eliminarJugador(); // Eliminar jugador
+                                                        case 2 ->
+                                                                jugadorController.modificarJugador(); // Modificar jugador
                                                         case 3 -> jugadorController.mostrarJugador(); // Mostrar jugador
                                                     }
                                                 }
-                                            }break;
+                                            }
+                                            break;
                                             case 1: {
                                                 String opcionStr011 = (String) JOptionPane.showInputDialog(null, "Selecciona una opción",
                                                         "Menú - Administrador - CRUD - Equipo", JOptionPane.QUESTION_MESSAGE, null, menuOptsCrudOptsEquipo, menuOptsCrudOptsEquipo[0]);
@@ -133,19 +137,24 @@ public class Main {
                                                     switch (opcion011) {
                                                         case 0: {
                                                             equipoController.altaValidarDatosEquipo(); // Alta equipo
-                                                        }break;
+                                                        }
+                                                        break;
                                                         case 1: {
                                                             equipoController.borrar(); // Baja equipo
-                                                        }break;
+                                                        }
+                                                        break;
                                                         case 2: {
                                                             equipoController.modificar(); // Modificar equipo
-                                                        }break;
+                                                        }
+                                                        break;
                                                         case 3: {
                                                             equipoController.mostrar(); // Mostrar equipo
-                                                        }break;
+                                                        }
+                                                        break;
                                                     }
                                                 }
-                                            }break;
+                                            }
+                                            break;
                                             case 2: {
                                                 String opcionStr012 = (String) JOptionPane.showInputDialog(null, "Selecciona una opción",
                                                         "Menú - Administrador - CRUD - Enfrentamiento", JOptionPane.QUESTION_MESSAGE, null, menuOptsCrudOptsEnfrentamiento, menuOptsCrudOptsEnfrentamiento[0]);

@@ -9,9 +9,6 @@ public class Equipo {
     private LocalDate fechaFund;
     private ArrayList<Jugador> jugadores;
 
-    public Equipo() {
-    }
-
     public Equipo(String codEquipo, String nombreEquipo, LocalDate fechaFund) {
         this.codEquipo = codEquipo;
         this.nombreEquipo = nombreEquipo;
