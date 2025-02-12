@@ -73,7 +73,7 @@ public class Main {
         };
 
         String[] menuOptsCrudOptsJornada = {
-                "Nueva Jornada", "Borrar Jornada", "Modificar Jornada", "Mostrar Jornada"
+                "Borrar Jornada", "Modificar Jornada", "Mostrar Jornadas"
         };
 
         String[] menuOptsCrudOptsCompeticion = {
@@ -179,10 +179,9 @@ public class Main {
                                                     int opcion013 = Arrays.asList(menuOptsCrudOptsJornada).indexOf(opcionStr013);
 
                                                     switch (opcion013) {
-                                                        case 0 -> jornadaController.generarJornada();// Nueva Jornada
-//                                                        case 1 -> // Borrar Jornada
-//                                                        case 2 -> // Modificar Jornada
-//                                                        case 3 -> // Mostrar Jornada
+                                                        case 0 -> jornadaController.borrarJornada(); // Borrar Jornada
+//                                                        case 1 -> // Modificar Jornada
+                                                        case 2 -> jornadaController.mostrarJornadas(); // Mostrar Jornadas
                                                     }
                                                 }
                                             }
@@ -205,13 +204,14 @@ public class Main {
                                             break;
                                         }
                                     }
-                                }
-                            }
+                                }break;
 //                                case 1: {} // Cerrar Etapa
-//                                case 2: {} // Generar Calendario
+                                case 2: {
+                                  jornadaController.generarJornada(); // Generar Calendario
+                                }break;
 //                                case 3: {} // Introducir Resultados
 //                                case 4: {} // Ver todos los informes
-//                            }
+                            }
                         }
                     }
                     break;
