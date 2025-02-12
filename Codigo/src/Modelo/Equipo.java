@@ -56,4 +56,7 @@ public class Equipo {
     public void setJugadores(ArrayList<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
+    public void añadirJugador(Jugador jugador) {
+        this.jugadores.add(jugador);
+    }
 }

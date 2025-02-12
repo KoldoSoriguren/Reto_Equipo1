@@ -1,11 +1,17 @@
 package Modelo;
 
+import Excepcion.DatoNoValido;
+
 import javax.swing.*;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Optional;
 
 public class JugadorDAO {
     private final ArrayList<Jugador> listaJugadores;
+    EquipoDAO equipoDAO= new EquipoDAO();
 
     public JugadorDAO() {
         listaJugadores = new ArrayList<>();
@@ -70,8 +76,14 @@ public class JugadorDAO {
                     Roles rol= modirole(cod,valor,propiedad);
                     jugador.get().setRol(rol);
                 }break;
-                case "EQUIPO":{}break;
-                case "FECHANACIMIENTO":{}break;
+                case "EQUIPO":{
+                        String codiequip=JOptionPane.showInputDialog("Ingrese el codigo del equipo del jugador");
+                        jugador.get().setEquipo(equipoDAO.obtenerEquipo(codiequip));
+                        equipoDAO.añadirjugador(jugador.get(),codiequip);
+                }break;
+                case "FECHANACIMIENTO":{
+                    jugador.get().setFechaNacimiento(modifech());
+                }break;
             }
         }else{
             JOptionPane.showMessageDialog(null, "No existe el jugador");
@@ -99,5 +111,22 @@ public class JugadorDAO {
 
 
        return rol;
+    }
+    public LocalDate modifech(){
+        try {
+            boolean error=false;
+            do {
+                DateTimeFormatter formato= DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                String fecha=JOptionPane.showInputDialog("Ingrese la fecha de nacimiento del jugador en dormato dd/mm/yyyy");
+                LocalDate fechaInicio=LocalDate.parse(fecha, formato);
+
+                return fechaInicio;
+            }while (!error);
+
+        }catch (DateTimeException e) {
+            JOptionPane.showMessageDialog(null, "Fecha incorrecta");
+        }
+        return null;
+
     }
 }
