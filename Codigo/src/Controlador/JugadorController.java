@@ -19,16 +19,17 @@ public class JugadorController {
     }
 
     public void altaValidarDatosJugador(){
-        String codJugador = solicitarDatos("CodJugador","Ingrese el código del jugador (esta opción no sera modificada más tarde)","^[0-9]{8}-[A-Z]$");
-        String nombre = solicitarDatos("Nombre","Ingrese el nombre del jugador","^[A-Z][a-z]*$");
-        String apellido = solicitarDatos("Apellidos","Ingrese los apellidos del jugador","^[A-Z][a-z]*$");
-        String nacionalidad = solicitarDatos("Nacionalidad","Ingrese el nacionalidad del jugador","Copy string literal text to the clipboard");
-        LocalDate fechaNac = formatearFecha(solicitarDatos("Fecha de Nacimiento","Ingrese la fecha de nacimiento del jugador","^[0-9]{2}/[0-9][2}/[0-9]{4}$"));
+        String codJugador = solicitarDatos("codJugador","Ingrese el código del jugador","^[0-9]{8}-[A-Z]$");
+        String nombre = solicitarDatos("nombre","Ingrese el nombre del jugador","^[A-Z][a-z]*$");
+        String apellido = solicitarDatos("apellido","Ingrese el apellido del jugador","^[A-Z][a-z]*$");
+        String nacionalidad = solicitarDatos("nacionalidad","Ingrese el nacionalidad del jugador","Copy string literal text to the clipboard");
+        LocalDate fechaNac = formatearFecha(solicitarDatos("fechaNac","Ingrese el fecha del nacimiento","^[0-9]{2}/[0-9][2}/[0-9]{4}$"));
         String nickname = solicitarDatos("nickname","Ingrese el nickname del jugador","Copy string literal text to the clipboard");
-        String rol = solicitarDatos("Rol", "Ingrese el rol del jugador en el juego (iniciador, duelista, controlador, centinela):", "^[A-Za-z]+$");
+
+        String rol = solicitarDatos("rol", "Ingrese el rol del jugador (iniciador, duelista, controlador, centinela):", "^[A-Za-z]+$");
         Roles roles = validarRol(rol);
 
-        double sueldo = Double.parseDouble(solicitarDatos("Sueldo", "Ingrese el sueldo del jugador", "^[0-9]+(\\.[0-9]{1,2})?$"));
+        double sueldo = Double.parseDouble(solicitarDatos("sueldo", "Ingrese el sueldo del jugador", "^[0-9]+(\\.[0-9]{1,2})?$"));
 
         Jugador j = new  Jugador(codJugador,nombre,apellido,nacionalidad,fechaNac,nickname,roles,sueldo);
 
@@ -79,9 +80,9 @@ public class JugadorController {
         }
     }
     public void modificarJugador(){
-        String cod = JOptionPane.showInputDialog("Ingrese el nuevo código del jugador");
+        String cod = JOptionPane.showInputDialog("Ingrese el código del jugador");
         String propiedad = JOptionPane.showInputDialog("Ingrese la propiedad del jugador que quieres cambiar");
-        String valor = JOptionPane.showInputDialog("Ingrese el nuevo valor");
+        String valor = JOptionPane.showInputDialog("Ingrese el valor");
 
         String mensaje = jugadorDAO.modJugador(cod,propiedad,valor);
 
@@ -96,7 +97,7 @@ public class JugadorController {
     public Roles validarRol(String rol){
         try{
             if(rol.isEmpty()){
-                throw new DatoNoValido("El rol es un campo obligatorio a rellenar");
+                throw new DatoNoValido("El rol es obligatorio");
             }
             return Roles.valueOf(rol.toUpperCase());
 
