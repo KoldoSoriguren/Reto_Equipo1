@@ -23,8 +23,8 @@ public class EquipoDAO {
     }
 
     private Optional<Equipo> buscarEquipoPorCod(String idEquipo){
-         Optional<Equipo> buscareEquip = listaEquipos.stream().filter(equipoABuscar-> equipoABuscar.getCodEquipo().equals(idEquipo)).findFirst();
-         return buscareEquip;
+         Optional<Equipo> buscarEquip = listaEquipos.stream().filter(equipoABuscar-> equipoABuscar.getCodEquipo().equals(idEquipo)).findFirst();
+         return buscarEquip;
     }
 
     public Equipo obtenerEquipo(String idEquipo){
