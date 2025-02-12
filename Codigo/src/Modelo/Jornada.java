@@ -31,19 +31,19 @@ public class Jornada {
     }
 
 //  Getter and Setter
-    public String getCod_jornada() {
+    public String getCodJornada() {
         return codJornada;
     }
 
-    public void setCod_jornada(String cod_jornada) {
+    public void setCodJornada(String cod_jornada) {
         this.codJornada = cod_jornada;
     }
 
-    public LocalDate getFecha_jornada() {
+    public LocalDate getFechaJornada() {
         return fechaJornada;
     }
 
-    public void setFecha_jornada(LocalDate fecha_jornada) {
+    public void setFechaJornada(LocalDate fecha_jornada) {
         this.fechaJornada = fecha_jornada;
     }
 

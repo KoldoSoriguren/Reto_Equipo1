@@ -6,11 +6,11 @@ import java.time.LocalTime;
 import java.util.*;
 
 public class JornadaDAO {
-    private final List<Jornada> ListaJornadas;
+    private final List<Jornada> listaJornadas;
     private final Random rand = new Random();
 
     public JornadaDAO() {
-        this.ListaJornadas = new ArrayList<Jornada>();
+        this.listaJornadas = new ArrayList<Jornada>();
     }
 
     public void generarJornadas(int numJornadas, List<Equipo> equipos, EnfrentamientoDAO enfrentamientoDAO) {
@@ -20,7 +20,7 @@ public class JornadaDAO {
 
             Jornada jornada = new Jornada(codJornada, fechaJornada);
             Set<String> enfrentados = new HashSet<>();
-            LocalTime horaInicial = LocalTime.of(10, 0);
+            LocalTime horaInicial = LocalTime.of(9, 0);
 
             while (jornada.getListaEnfrentamientos().size() < equipos.size() / 2) {
                 Equipo e1 = equipos.get(rand.nextInt(equipos.size()));
@@ -37,18 +37,32 @@ public class JornadaDAO {
                     horaInicial = horaInicial.plusHours(2);
                 }
             }
-            ListaJornadas.add(jornada);
+            listaJornadas.add(jornada);
         }
-
-        mostrarJornadas();
     }
 
+    public void eliminarJornadaPorCod(String codJornada) {
+        Optional<Jornada> jornadaAEliminar = listaJornadas.stream()
+                .filter(j -> j.getCodJornada().equals(codJornada))
+                .findFirst();
+
+        if (jornadaAEliminar.isPresent()) {
+            listaJornadas.remove(jornadaAEliminar.get());
+        }
+    }
+
+
     public void mostrarJornadas() {
-        StringBuilder mensajeFinal = new StringBuilder("JORNADAS GENERADAS\n\n");
-        for (Jornada j : ListaJornadas) {
+        StringBuilder mensajeFinal = new StringBuilder("JORNADAS GENERADAS\n");
+        for (Jornada j : listaJornadas) {
             mensajeFinal.append(j.mostrarJornada()).append("\n");
         }
 
         JOptionPane.showMessageDialog(null, mensajeFinal.toString(), "Jornadas", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private Optional<Jornada> buscarJornadaPorCod(String codJornada) {
+        Optional<Jornada> buscarJornada = listaJornadas.stream().filter(jornadaABuscar-> jornadaABuscar.getCodJornada().equals(codJornada)).findFirst();
+        return buscarJornada;
     }
 }
