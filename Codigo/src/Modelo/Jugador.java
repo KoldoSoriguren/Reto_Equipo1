@@ -29,7 +29,7 @@ public class Jugador {
     }
 
     //    Funciones:
-    private Roles validarRol(String rolIngresado) {
+        private Roles validarRol(String rolIngresado) {
         for (Roles r : Roles.values()) {
             if (r.name().equalsIgnoreCase(rolIngresado)) {
                 return r;
