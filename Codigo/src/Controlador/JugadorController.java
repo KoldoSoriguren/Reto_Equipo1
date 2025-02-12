@@ -59,7 +59,7 @@ public class JugadorController {
         double sueldo = Double.parseDouble(solicitarDatos("sueldo", "Ingrese el sueldo del jugador", "^[0-9]+(\\.[0-9]{1,2})?$"));
 
         Jugador j = new  Jugador(codJugador,nombre,apellido,nacionalidad,fechaNac,nickname,roles,sueldo,equip);
-        equipoDAO.añadirjugador(j,j.getEquipo().getCodEquipo());
+        equipoDAO.añadirJugador(j,j.getEquipo().getCodEquipo());
         jugadorDAO.agregarJugador(j);
     }
 

@@ -4,38 +4,42 @@ import java.util.List;
 import java.util.Optional;
 
 public class EquipoDAO {
-    private final ArrayList<Equipo> equipos;
+    private final ArrayList<Equipo> listaEquipos;
 
     public EquipoDAO() {
-        this.equipos = new ArrayList<>();
-    }
-
-    public ArrayList<Equipo> getEquipos() {
-        return equipos;
-    }
-
-    public void insertar(Equipo equipo){
-        equipos.add(equipo);
-    }
-  
-    public void borrar(Equipo opcionElegida){
-        equipos.remove(opcionElegida);
+        this.listaEquipos = new ArrayList<>();
     }
   
     public List<Equipo> obtenerEquipos() {
-        return equipos;
+        return listaEquipos;
     }
+
+    public void altaEquipo(Equipo equipo) {
+        listaEquipos.add(equipo);
+    }
+
+    public void bajaEquipo(Equipo equipo) {
+        listaEquipos.remove(equipo);
+    }
+
+    private Optional<Equipo> buscarEquipoPorCod(String idEquipo){
+         Optional<Equipo> buscareEquip = listaEquipos.stream().filter(equipoABuscar-> equipoABuscar.getCodEquipo().equals(idEquipo)).findFirst();
+         return buscareEquip;
+    }
+
     public Equipo obtenerEquipo(String idEquipo){
-        Optional<Equipo> buscarequip= equipos.stream().filter(equipoABuscar-> equipoABuscar.getCodEquipo().equals(idEquipo)).findFirst();
-        return buscarequip.orElse(null);
+        Optional<Equipo> buscarEquip = buscarEquipoPorCod(idEquipo);
+        return buscarEquip.orElse(null);
     }
-    public void añadirjugador( Jugador jugador, String idEquipo){
-        Optional<Equipo> buscarequip= equipos.stream().filter(equipoABuscar-> equipoABuscar.getCodEquipo().equals(idEquipo)).findFirst();
-        buscarequip.get().añadirJugador(jugador);
+
+    public void añadirJugador(Jugador jugador, String idEquipo){
+        Optional<Equipo> buscarEquip = buscarEquipoPorCod(idEquipo);
+        buscarEquip.get().añadirJugador(jugador);
     }
-    public void eliminarjugador(Jugador jugador, String idEquipo){
-        Optional<Equipo> buscarequip= equipos.stream().filter(equipoABuscar-> equipoABuscar.getCodEquipo().equals(idEquipo)).findFirst();
-        buscarequip.get().eliminarJugador(jugador);
+
+    public void eliminarJugador(Jugador jugador, String idEquipo){
+        Optional<Equipo> buscarEquip = buscarEquipoPorCod(idEquipo);
+        buscarEquip.get().eliminarJugador(jugador);
     }
 }
 
