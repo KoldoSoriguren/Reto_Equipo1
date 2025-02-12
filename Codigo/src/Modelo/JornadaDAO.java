@@ -15,7 +15,10 @@ public class JornadaDAO {
 
     public void generarJornadas(int numJornadas, List<Equipo> equipos, EnfrentamientoDAO enfrentamientoDAO) {
         for (int i = 1; i <= numJornadas; i++) {
-            Jornada jornada = new Jornada("J" + i, LocalDate.now().plusDays(i));
+            LocalDate fechaJornada = LocalDate.now().plusDays(i);
+            String codJornada = String.format("J-%04d", i); // Código de 4 dígitos
+
+            Jornada jornada = new Jornada(codJornada, fechaJornada);
             Set<String> enfrentados = new HashSet<>();
             LocalTime horaInicial = LocalTime.of(10, 0);
 

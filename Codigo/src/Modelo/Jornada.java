@@ -2,26 +2,25 @@ package Modelo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Jornada {
     private String codJornada;
     private String resultado;
-    private Date fechaJornada;
+    private LocalDate fechaJornada;
     private Competicion competicion;
     private List<Enfrentamiento> ListaEnfrentamientos;
 
     public Jornada() {
     }
 
-    public Jornada(String cod_jornada, Date fecha_jornada, String resultado) {
+    public Jornada(String cod_jornada, LocalDate fechaJornada, String resultado) {
         this.codJornada = cod_jornada;
-        this.fechaJornada = fecha_jornada;
+        this.fechaJornada = fechaJornada;
         this.resultado = resultado;
     }
 
-    public Jornada(String codJornada, LocalDate fecha) {
+    public Jornada(String codJornada, LocalDate fechaJornada) {
         this.codJornada = codJornada;
         this.fechaJornada = fechaJornada;
         this.ListaEnfrentamientos = new ArrayList<>();
@@ -40,11 +39,11 @@ public class Jornada {
         this.codJornada = cod_jornada;
     }
 
-    public Date getFecha_jornada() {
+    public LocalDate getFecha_jornada() {
         return fechaJornada;
     }
 
-    public void setFecha_jornada(Date fecha_jornada) {
+    public void setFecha_jornada(LocalDate fecha_jornada) {
         this.fechaJornada = fecha_jornada;
     }
 
