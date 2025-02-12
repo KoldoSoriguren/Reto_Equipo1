@@ -1,7 +1,7 @@
 package Modelo;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class EquipoDAO {
     private final ArrayList<Equipo> equipos;
@@ -25,4 +25,17 @@ public class EquipoDAO {
     public List<Equipo> obtenerEquipos() {
         return equipos;
     }
+    public Equipo obtenerEquipo(String idEquipo){
+        Optional<Equipo> buscarequip= equipos.stream().filter(equipoABuscar-> equipoABuscar.getCodEquipo().equals(idEquipo)).findFirst();
+        return buscarequip.orElse(null);
+    }
+    public void añadirjugador( Jugador jugador, String idEquipo){
+        Optional<Equipo> buscarequip= equipos.stream().filter(equipoABuscar-> equipoABuscar.getCodEquipo().equals(idEquipo)).findFirst();
+        buscarequip.get().añadirJugador(jugador);
+    }
+    public void eliminarjugador(Jugador jugador, String idEquipo){
+        Optional<Equipo> buscarequip= equipos.stream().filter(equipoABuscar-> equipoABuscar.getCodEquipo().equals(idEquipo)).findFirst();
+        buscarequip.get().eliminarJugador(jugador);
+    }
 }
+
