@@ -8,6 +8,7 @@ import Modelo.Roles;
 import javax.swing.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,15 +20,30 @@ public class JugadorController {
     }
 
     public void altaValidarDatosJugador(){
-        String codJugador = solicitarDatos("codJugador","Ingrese el código del jugador","^[0-9]{8}-[A-Z]$");
+        String[] optsRoles = {
+                "DUELISTA", "INICIADOR", "CONTROLADOR", "CENTINELA"
+        };
+        Roles roles= null;
+        String codJugador = solicitarDatos("codJugador","Ingrese el dni del jugador","^[0-9]{8}[A-Z]$");
         String nombre = solicitarDatos("nombre","Ingrese el nombre del jugador","^[A-Z][a-z]*$");
         String apellido = solicitarDatos("apellido","Ingrese el apellido del jugador","^[A-Z][a-z]*$");
-        String nacionalidad = solicitarDatos("nacionalidad","Ingrese el nacionalidad del jugador","Copy string literal text to the clipboard");
-        LocalDate fechaNac = formatearFecha(solicitarDatos("fechaNac","Ingrese el fecha del nacimiento","^[0-9]{2}/[0-9][2}/[0-9]{4}$"));
-        String nickname = solicitarDatos("nickname","Ingrese el nickname del jugador","Copy string literal text to the clipboard");
+        String nacionalidad = solicitarDatos("nacionalidad","Ingrese el nacionalidad del jugador",null);
+        LocalDate fechaNac = formatearFecha(solicitarDatos("fechaNac","Ingrese el fecha del nacimiento dd/MM/yyyy",null));
+        String nickname = solicitarDatos("nickname","Ingrese el nickname del jugador", null);
 
-        String rol = solicitarDatos("rol", "Ingrese el rol del jugador (iniciador, duelista, controlador, centinela):", "^[A-Za-z]+$");
-        Roles roles = validarRol(rol);
+        String opcionStr = (String) JOptionPane.showInputDialog(null, "Selecciona rol",
+                "Menú", JOptionPane.QUESTION_MESSAGE, null, optsRoles, optsRoles[0]);
+
+        if (opcionStr != null) {
+            int opcion = Arrays.asList(optsRoles).indexOf(opcionStr);
+
+            switch (opcion) {
+                case 0 -> roles=Roles.DUELISTA;
+                case 1 -> roles=Roles.INICIADOR;
+                case 2 -> roles=Roles.CONTROLADOR;
+                case 3 -> roles=Roles.CENTINELA;
+            }
+        }
 
         double sueldo = Double.parseDouble(solicitarDatos("sueldo", "Ingrese el sueldo del jugador", "^[0-9]+(\\.[0-9]{1,2})?$"));
 
@@ -80,8 +96,16 @@ public class JugadorController {
         }
     }
     public void modificarJugador(){
+        String propiedad;
         String cod = JOptionPane.showInputDialog("Ingrese el código del jugador");
-        String propiedad = JOptionPane.showInputDialog("Ingrese la propiedad del jugador que quieres cambiar");
+        boolean error=true;
+        do {
+            propiedad = JOptionPane.showInputDialog("Ingrese la propiedad del jugador que quieres cambiar");
+            if(propiedad.equalsIgnoreCase("duelista")||propiedad.equalsIgnoreCase("controlador")||propiedad.equalsIgnoreCase("iniciador")||propiedad.equalsIgnoreCase("centinela")){
+                error=false;
+            }
+        }while(error);
+
         String valor = JOptionPane.showInputDialog("Ingrese el valor");
 
         String mensaje = jugadorDAO.modJugador(cod,propiedad,valor);

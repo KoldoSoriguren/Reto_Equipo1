@@ -179,7 +179,7 @@ public class Main {
                                                     int opcion013 = Arrays.asList(menuOptsCrudOptsJornada).indexOf(opcionStr013);
 
                                                     switch (opcion013) {
-//                                                        case 0 -> // Nueva Jornada
+                                                        case 0 -> jornadaController.generarJornada();// Nueva Jornada
 //                                                        case 1 -> // Borrar Jornada
 //                                                        case 2 -> // Modificar Jornada
 //                                                        case 3 -> // Mostrar Jornada
