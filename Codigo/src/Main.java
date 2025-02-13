@@ -180,7 +180,7 @@ public class Main {
 
                                                     switch (opcion013) {
                                                         case 0 -> jornadaController.borrarJornada(); // Borrar Jornada
-//                                                        case 1 -> // Modificar Jornada
+                                                        case 1 -> jornadaController.modificarJornada(); // Modificar Jornada
                                                         case 2 -> jornadaController.mostrarJornadas(); // Mostrar Jornadas
                                                     }
                                                 }
