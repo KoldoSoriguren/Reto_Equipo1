@@ -42,7 +42,8 @@ public class EquipoDAO {
         String idEquipo = jugador.getEquipo().getCodEquipo();
 
         Optional<Equipo> buscarEquipo = buscarEquipoPorCod(idEquipo);
-        buscarEquipo.get().altaJugador(jugador);
+
+        buscarEquipo.get().getListaJugadores().add(jugador);
     }
 
     public void eliminarJugador(Jugador jugador, String idEquipo){

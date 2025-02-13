@@ -21,7 +21,8 @@ public class JugadorController {
 
     public void altaValidarDatosJugador(){
         Equipo equipo;
-        Roles roles= null;
+        Roles roles = null;
+        boolean error = true;
         String[] optsRoles = {
                 "DUELISTA", "INICIADOR", "CONTROLADOR", "CENTINELA"
         };
@@ -39,14 +40,15 @@ public class JugadorController {
             int opcion = Arrays.asList(optsRoles).indexOf(opcionStr);
 
             switch (opcion) {
-                case 0 -> roles=Roles.DUELISTA;
-                case 1 -> roles=Roles.INICIADOR;
-                case 2 -> roles=Roles.CONTROLADOR;
-                case 3 -> roles=Roles.CENTINELA;
+                case 0 -> roles = Roles.DUELISTA;
+                case 1 -> roles = Roles.INICIADOR;
+                case 2 -> roles = Roles.CONTROLADOR;
+                case 3 -> roles = Roles.CENTINELA;
             }
         }
 
-        boolean error = true;
+        double sueldo = Double.parseDouble(solicitarDatos("sueldo", "Ingrese el sueldo del jugador", "^[0-9]+(\\.[0-9]{1,2})?$"));
+
         do {
             String codi = JOptionPane.showInputDialog("Ingresa el código de equipo que le quieres insertar al jugador");
              equipo = equipoDAO.obtenerEquipo(codi);
@@ -59,9 +61,8 @@ public class JugadorController {
             }
         }while (error);
 
-        double sueldo = Double.parseDouble(solicitarDatos("sueldo", "Ingrese el sueldo del jugador", "^[0-9]+(\\.[0-9]{1,2})?$"));
-
         Jugador j = new  Jugador(codJugador,nombre,apellido,nacionalidad,fechaNac,nickname,roles,sueldo, equipo);
+
         equipoDAO.agregarJugador(j);
         jugadorDAO.agregarJugador(j);
     }
