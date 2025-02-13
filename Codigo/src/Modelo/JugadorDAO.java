@@ -1,7 +1,5 @@
 package Modelo;
 
-import Controlador.EquipoController;
-
 import javax.swing.*;
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -12,7 +10,6 @@ import java.util.Optional;
 public class JugadorDAO {
     private final ArrayList<Jugador> listaJugadores;
     EquipoDAO equipoDAO= new EquipoDAO();
-
 
     public JugadorDAO() {
         listaJugadores = new ArrayList<>();
@@ -48,7 +45,7 @@ public class JugadorDAO {
         return j;
     }
 
-    public String modJugador(String cod, String valor, String propiedad){
+    public String modJugador(String cod, String nuevoDato, String propiedad){
         String mensaje="";
         Optional<Jugador> jugador = listaJugadores.stream().filter(jugadorABuscar -> jugadorABuscar.getCodJugador().equals(cod)).findFirst();
         propiedad.toUpperCase();
@@ -56,37 +53,39 @@ public class JugadorDAO {
             switch (propiedad) {
                 case "NOMBRE":{
 
-                    jugador.get().setNombre(valor);
+                    jugador.get().setNombre(nuevoDato);
                     mensaje = "Jugador actualizado";
                 }break;
                 case "NICKNAME":{
 
-                    jugador.get().setNickname(valor);
+                    jugador.get().setNickname(nuevoDato);
                     mensaje = "Jugador actualizado";
                 }break;
                 case "APELLIDO":{
 
-                    jugador.get().setApellido(valor);
+                    jugador.get().setApellido(nuevoDato);
                     mensaje = "Jugador actualizado";
                 }break;
                 case "SUELDO":{
-                    Double salario= Double.valueOf(valor);
+                    Double salario= Double.valueOf(nuevoDato);
                     jugador.get().setSueldo(salario);
                     mensaje = "Jugador actualizado";
                 }break;
                 case "NACIONALIDAD":{
-                    jugador.get().setNacionalidad(valor);
+                    jugador.get().setNacionalidad(nuevoDato);
                     mensaje = "Jugador actualizado";
                 }break;
                 case "ROL":{
-                    Roles rol= modirole(cod,valor,propiedad);
+                    Roles rol= modirole(cod, nuevoDato, propiedad);
                     jugador.get().setRol(rol);
                     mensaje = "Jugador actualizado";
                 }break;
                 case "EQUIPO":{
-                        equipoDAO.eliminarJugador(jugador.get(),valor);
-                        jugador.get().setEquipo(equipoDAO.obtenerEquipo(valor));
-                        equipoDAO.añadirJugador(jugador.get(),valor);
+                        equipoDAO.eliminarJugador(jugador.get(), nuevoDato);
+
+                        jugador.get().setEquipo(equipoDAO.obtenerEquipo(nuevoDato));
+
+                        equipoDAO.agregarJugador(jugador.get());
                         if (jugador.get().getEquipo() == null) {
                             mensaje = "Equipo no encontrado tu jugador se declarara como agente libre";
                         }
@@ -125,11 +124,11 @@ public class JugadorDAO {
     }
     public LocalDate modifech(){
         try {
-            boolean error=false;
+            boolean error = false;
             do {
-                DateTimeFormatter formato= DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                String fecha=JOptionPane.showInputDialog("Ingrese la fecha de nacimiento del jugador en dormato dd/mm/yyyy");
-                LocalDate fechaInicio=LocalDate.parse(fecha, formato);
+                DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                String fecha=JOptionPane.showInputDialog("Ingrese la fecha de nacimiento del jugador (dd/mm/yyyy)");
+                LocalDate fechaInicio = LocalDate.parse(fecha, formato);
 
                 return fechaInicio;
             }while (!error);

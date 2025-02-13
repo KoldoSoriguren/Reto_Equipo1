@@ -31,6 +31,8 @@ public class EnfrentamientoController {
         String seleccion = (String) JOptionPane.showInputDialog(null, "Seleccione un enfrentamiento:",
                 "Seleccionar Enfrentamiento", JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
 
-        enfrentamientoDAO.agregarResultados(seleccion, lista);
+        String resultado = JOptionPane.showInputDialog("Ingrese el resultado del enfrentamiento:");
+
+        enfrentamientoDAO.agregarResultados(seleccion, lista, resultado);
     }
 }

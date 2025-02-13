@@ -19,12 +19,12 @@ public class EnfrentamientoDAO {
         return ListaEnfrentamientos;
     }
 
-    public void agregarResultados(String seleccion, List<Enfrentamiento> lista){
+    public void agregarResultados(String seleccion, List<Enfrentamiento> lista, String resultado){
         if (seleccion != null) {
             int index = lista.indexOf(lista.stream().filter(e -> e.toString().equals(seleccion)).findFirst().orElse(null));
 
             if (index != -1) {
-                String resultado = JOptionPane.showInputDialog("Ingrese el resultado del enfrentamiento:");
+
                 if (resultado != null && !resultado.isEmpty()) {
                     lista.get(index).setResultado(resultado);
                     JOptionPane.showMessageDialog(null, "Resultado actualizado correctamente.");

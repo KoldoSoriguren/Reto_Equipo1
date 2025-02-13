@@ -12,23 +12,26 @@ import java.util.regex.Pattern;
 
 public class JugadorController {
     private final JugadorDAO jugadorDAO;
-    public JugadorController(JugadorDAO jugadorDAO) {
+    private final EquipoDAO equipoDAO;
+
+    public JugadorController(JugadorDAO jugadorDAO, EquipoDAO equipoDAO) {
         this.jugadorDAO = jugadorDAO;
+        this.equipoDAO = equipoDAO;
     }
 
     public void altaValidarDatosJugador(){
-        EquipoDAO equipoDAO = new EquipoDAO();
-        Equipo equip;
+        Equipo equipo;
+        Roles roles= null;
         String[] optsRoles = {
                 "DUELISTA", "INICIADOR", "CONTROLADOR", "CENTINELA"
         };
-        Roles roles= null;
+
         String codJugador = solicitarDatos("codJugador","Ingrese el dni del jugador","^[0-9]{8}[A-Z]$");
         String nombre = solicitarDatos("nombre","Ingrese el nombre del jugador","^[A-Z][a-z]*$");
         String apellido = solicitarDatos("apellido","Ingrese el apellido del jugador","^[A-Z][a-z]*$");
-        String nacionalidad = solicitarDatos("nacionalidad","Ingrese el nacionalidad del jugador",null);
-        LocalDate fechaNac = formatearFecha(solicitarDatos("fechaNac","Ingrese el fecha del nacimiento dd/MM/yyyy",null));
-        String nickname = solicitarDatos("nickname","Ingrese el nickname del jugador", null);
+        String nacionalidad = solicitarDatos("nacionalidad","Ingrese el nacionalidad del jugador","^[A-Z][a-z]*$");
+        LocalDate fechaNac = formatearFecha(solicitarDatos("fechaNac","Ingrese el fecha del nacimiento dd/MM/yyyy","^[0-9]{2}/[0-9]{2}/[0-9]{4}"));
+        String nickname = solicitarDatos("nickname","Ingrese el nickname del jugador", "^[A-Z][a-z]*$");
         String opcionStr = (String) JOptionPane.showInputDialog(null, "Selecciona rol",
                 "Menú", JOptionPane.QUESTION_MESSAGE, null, optsRoles, optsRoles[0]);
 
@@ -45,21 +48,21 @@ public class JugadorController {
 
         boolean error = true;
         do {
-            String codi =JOptionPane.showInputDialog("Ingresa el codigo de equipo que le quieres insertar al jugador");
-             equip=equipoDAO.obtenerEquipo(codi);
-            if (equip == null) {
+            String codi = JOptionPane.showInputDialog("Ingresa el código de equipo que le quieres insertar al jugador");
+             equipo = equipoDAO.obtenerEquipo(codi);
+
+            if (equipo == null) {
                 JOptionPane.showMessageDialog(null, "El equipo no existe");
+
             }else{
                 error = false;
             }
-
         }while (error);
-
 
         double sueldo = Double.parseDouble(solicitarDatos("sueldo", "Ingrese el sueldo del jugador", "^[0-9]+(\\.[0-9]{1,2})?$"));
 
-        Jugador j = new  Jugador(codJugador,nombre,apellido,nacionalidad,fechaNac,nickname,roles,sueldo,equip);
-        equipoDAO.añadirJugador(j,j.getEquipo().getCodEquipo());
+        Jugador j = new  Jugador(codJugador,nombre,apellido,nacionalidad,fechaNac,nickname,roles,sueldo, equipo);
+        equipoDAO.agregarJugador(j);
         jugadorDAO.agregarJugador(j);
     }
 
@@ -109,89 +112,99 @@ public class JugadorController {
     public void modificarJugador(){
         String propiedad;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String valor;
+        String nuevoDato;
+
         String cod = JOptionPane.showInputDialog("Ingrese el código del jugador");
         propiedad = JOptionPane.showInputDialog("Ingrese la propiedad del jugador que quieres cambiar");
-        boolean error=true;
-        double sal=0;
-        do {
+        boolean error = true;
+        double sal;
 
-             valor = JOptionPane.showInputDialog("Ingrese el valor");
+        do {
+            nuevoDato = JOptionPane.showInputDialog("Ingrese el nuevo dato");
             propiedad.toLowerCase();
+
              switch(propiedad){
                  case "nombre":{
-                     if(valor.matches("^[A-Z][a-z]*$")){
+                     if(nuevoDato.matches("^[A-Z][a-z]*$")){
                          error=false;
                      }else{
                          JOptionPane.showMessageDialog(null,"Nombre no valido");
                      }
                  }break;
+
                  case "nickname":{
-                     if (valor.isEmpty()){
-                         JOptionPane.showMessageDialog(null,"El nombre del jugador no puede ser vacio");
+                     if (nuevoDato.isEmpty()){
+                         JOptionPane.showMessageDialog(null,"El nickname del jugador no puede ser vació");
                      }else{
                          error=false;
                      }
                  } break;
+
                  case "apellido":{
-                     if(valor.matches("^[A-Z][a-z]*$")){
+                     if(nuevoDato.matches("^[A-Z][a-z]*$")){
                          error=false;
                      }else{
                          JOptionPane.showMessageDialog(null,"Apellido no valido");
                      }
                  } break;
+
                  case "nacionalidad":{
-                     if(valor.matches("^[A-Z][a-z]*$")){
+                     if(nuevoDato.matches("^[A-Z][a-z]*$")){
                          error=false;
                      }else{
                          JOptionPane.showMessageDialog(null,"Nacionalidad no valida");
                      }
 
                  } break;
-                 case "fechanacimiento":{
-                     if (valor.matches(String.valueOf(formatter))){
+
+                 case "fechaNacimiento":{
+                     if (nuevoDato.matches(String.valueOf(formatter))){
                          error=false;
                      }else{
-                         JOptionPane.showMessageDialog(null,"Valor de fecha no es valido");
+                         JOptionPane.showMessageDialog(null,"La fecha no es valida");
                      }
                  } break;
-                 case "role":{ if (valor.equalsIgnoreCase("duelista")||propiedad.equalsIgnoreCase("controlador")||propiedad.equalsIgnoreCase("iniciador")||propiedad.equalsIgnoreCase("centinela")){
+
+                 case "role": {
+                     if (nuevoDato.equalsIgnoreCase("duelista") ||
+                             propiedad.equalsIgnoreCase("controlador") ||
+                             propiedad.equalsIgnoreCase("iniciador") ||
+                             propiedad.equalsIgnoreCase("centinela"))
+                     {
                      error=false;
 
-                 }else{
-                     JOptionPane.showMessageDialog(null,"Rol no valido");
-                 }}
-                    break;
+                     }else{
+                         JOptionPane.showMessageDialog(null,"Rol no valido");
+                     }
+                 } break;
+
                  case "sueldo":{
-                    if (valor.matches("^[A-Z][a-z]*$")){
-                        sal=Double.parseDouble(valor);
+                    if (nuevoDato.matches("^[A-Z][a-z]*$")){
+                        sal=Double.parseDouble(nuevoDato);
                         if (sal>1184.00){
                             error=false;
                         }else{
-                            JOptionPane.showMessageDialog(null,"Sueldo menor al salario minimo");
+                            JOptionPane.showMessageDialog(null,"Sueldo menor al salario mínimo");
                         }
                     }else{
                         JOptionPane.showMessageDialog(null,"Formato de sueldo no valido");
                     }
-
                  } break;
+
                  case "equipo":{
-                     if (valor.matches("^[0-9]{4}$")){
+                     if (nuevoDato.matches("^[0-9]{4}$")){
                          error=false;
                      }else {
-                         JOptionPane.showMessageDialog(null,"No es valido el codigo de ese equipo");
+                         JOptionPane.showMessageDialog(null,"No es valido el código de ese equipo");
                      }
-
                  } break;
              }
 
         }while(error);
 
+        String mensaje = jugadorDAO.modJugador(cod, propiedad, nuevoDato);
 
-
-        String mensaje = jugadorDAO.modJugador(cod,propiedad,valor);
-        JOptionPane.showMessageDialog(null,mensaje);
-
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 
 //    Validaciones:

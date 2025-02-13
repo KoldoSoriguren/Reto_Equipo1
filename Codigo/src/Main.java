@@ -29,11 +29,11 @@ public class Main {
     }
 
     public static void crearObjetos() {
-        jugadorDAO = new JugadorDAO();
-        jugadorController = new JugadorController(jugadorDAO);
-
         equipoDAO = new EquipoDAO();
         equipoController = new EquipoController(equipoDAO);
+
+        jugadorDAO = new JugadorDAO();
+        jugadorController = new JugadorController(jugadorDAO, equipoDAO);
 
         competicionDAO = new CompeticionDAO();
         competicionController = new CompeticionController(competicionDAO);
@@ -194,8 +194,8 @@ public class Main {
                                   jornadaController.generarJornada(); // Generar Calendario
                                 }break;
                                 case 3: {
-                                    enfrentamientoController.agregarResultados();
-                                } // Introducir Resultados
+                                    enfrentamientoController.agregarResultados(); // Introducir Resultados
+                                }
 //                                case 4: {} // Ver todos los informes
                             }
                         }
