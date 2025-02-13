@@ -19,13 +19,18 @@ public class EquipoController {
     }
 
     public void altaValidarDatosEquipo() {
+        Boolean a;
         String cod = solicitarDatos("Código", "Introduce el código del equipo", "^[0-9]{4}$");
         String nombre = solicitarDatos("Nombre", "Introduce el nombre del equipo", "^[A-Z][a-z]+(?:\\s[A-Z][a-z]+)*$");
         LocalDate fecha = formatearFecha(solicitarDatos("Fecha de fundación", "Introduce la fecha de fundación del equipo", "^(0[1-9]|(1|2)[0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$"));
-
+        a=equipoDAO.verificarNom(nombre);
         Equipo equipo = new Equipo(cod, nombre, fecha);
+        if (a){
+            equipoDAO.altaEquipo(equipo);
+        }else {
+            JOptionPane.showMessageDialog(null, "Ya hay un equipo registrado con ese nombre");
+        }
 
-        equipoDAO.altaEquipo(equipo);
     }
 
     public void modificar() {

@@ -47,5 +47,13 @@ public class EquipoDAO {
         Optional<Equipo> buscarEquip = buscarEquipoPorCod(idEquipo);
         buscarEquip.get().bajaJugador(jugador);
     }
+    public Boolean verificarNom(String nombre){
+        Boolean a = true;
+        Optional<Equipo> buscarEquip = listaEquipos.stream().filter(equipo -> equipo.getNombreEquipo().equals(nombre)).findFirst();
+        if(buscarEquip.isPresent()){
+            a=false;
+        }
+        return a;
+    }
 }
 
