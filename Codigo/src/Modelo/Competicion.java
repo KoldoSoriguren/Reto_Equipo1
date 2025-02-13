@@ -1,22 +1,24 @@
 package Modelo;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Competicion {
     private String cod_compe;
-    private Date fecha_compe;
+    private String nombre;
+    private LocalDate fecha_inicia;
+    private LocalDate fecha_fin;
     private String estado;
-    private Date fecha_fin;
-    private Jornada jornada;
-    public Competicion() {
+    private ArrayList<Jornada> listaJornadas;
 
-    }
 
-    public Competicion(String cod_compe, Date fecha_fin, String estado, Date fecha_compe) {
+    public Competicion(String cod_compe,String nombre, LocalDate fecha_inicia, LocalDate fecha_fin, String estado) {
         this.cod_compe = cod_compe;
+        this.nombre = nombre;
+        this.fecha_inicia = fecha_inicia;
         this.fecha_fin = fecha_fin;
         this.estado = estado;
-        this.fecha_compe = fecha_compe;
     }
 
     public String getCod_compe() {
@@ -26,12 +28,25 @@ public class Competicion {
     public void setCod_compe(String cod_compe) {
         this.cod_compe = cod_compe;
     }
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public LocalDate getFecha_inicia() {
+        return fecha_inicia;
+    }
 
-    public Date getFecha_fin() {
+    public void setFecha_inicia(LocalDate fecha_inicia) {
+        this.fecha_inicia = fecha_inicia;
+    }
+
+    public LocalDate getFecha_fin() {
         return fecha_fin;
     }
 
-    public void setFecha_fin(Date fecha_fin) {
+    public void setFecha_fin(LocalDate fecha_fin) {
         this.fecha_fin = fecha_fin;
     }
 
@@ -43,11 +58,18 @@ public class Competicion {
         this.estado = estado;
     }
 
-    public Date getFecha_compe() {
-        return fecha_compe;
+    public ArrayList<Jornada> getListaJornadas() {
+        return listaJornadas;
     }
 
-    public void setFecha_compe(Date fecha_compe) {
-        this.fecha_compe = fecha_compe;
+    public void setListaJornadas(ArrayList<Jornada> listaJornadas) {
+        this.listaJornadas = listaJornadas;
+    }
+
+    public void agregarJornada(Jornada j) {
+        if(listaJornadas == null) {
+            listaJornadas = new ArrayList<>();
+        }
+        listaJornadas.add(j);
     }
 }
