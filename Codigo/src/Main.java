@@ -152,7 +152,7 @@ public class Main {
                                             }
                                             break;
                                             case 2: {
-                                                enfrentamientoController.modificar();
+                                                enfrentamientoController.modificar(); // Modificar Enfrentamiento
                                             }
                                             break;
                                             case 3: {
