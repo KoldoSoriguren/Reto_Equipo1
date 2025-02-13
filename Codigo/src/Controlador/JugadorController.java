@@ -108,18 +108,89 @@ public class JugadorController {
     }
     public void modificarJugador(){
         String propiedad;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String valor;
         String cod = JOptionPane.showInputDialog("Ingrese el código del jugador");
+        propiedad = JOptionPane.showInputDialog("Ingrese la propiedad del jugador que quieres cambiar");
         boolean error=true;
+        double sal=0;
         do {
-            propiedad = JOptionPane.showInputDialog("Ingrese la propiedad del jugador que quieres cambiar");
-            if(propiedad.equalsIgnoreCase("duelista")||propiedad.equalsIgnoreCase("controlador")||propiedad.equalsIgnoreCase("iniciador")||propiedad.equalsIgnoreCase("centinela")){
-                error=false;
-            }
+
+             valor = JOptionPane.showInputDialog("Ingrese el valor");
+            propiedad.toLowerCase();
+             switch(propiedad){
+                 case "nombre":{
+                     if(valor.matches("^[A-Z][a-z]*$")){
+                         error=false;
+                     }else{
+                         JOptionPane.showMessageDialog(null,"Nombre no valido");
+                     }
+                 }break;
+                 case "nickname":{
+                     if (valor.isEmpty()){
+                         JOptionPane.showMessageDialog(null,"El nombre del jugador no puede ser vacio");
+                     }else{
+                         error=false;
+                     }
+                 } break;
+                 case "apellido":{
+                     if(valor.matches("^[A-Z][a-z]*$")){
+                         error=false;
+                     }else{
+                         JOptionPane.showMessageDialog(null,"Apellido no valido");
+                     }
+                 } break;
+                 case "nacionalidad":{
+                     if(valor.matches("^[A-Z][a-z]*$")){
+                         error=false;
+                     }else{
+                         JOptionPane.showMessageDialog(null,"Nacionalidad no valida");
+                     }
+
+                 } break;
+                 case "fechanacimiento":{
+                     if (valor.matches(String.valueOf(formatter))){
+                         error=false;
+                     }else{
+                         JOptionPane.showMessageDialog(null,"Valor de fecha no es valido");
+                     }
+                 } break;
+                 case "role":{ if (valor.equalsIgnoreCase("duelista")||propiedad.equalsIgnoreCase("controlador")||propiedad.equalsIgnoreCase("iniciador")||propiedad.equalsIgnoreCase("centinela")){
+                     error=false;
+
+                 }else{
+                     JOptionPane.showMessageDialog(null,"Rol no valido");
+                 }}
+                    break;
+                 case "sueldo":{
+                    if (valor.matches("^[A-Z][a-z]*$")){
+                        sal=Double.parseDouble(valor);
+                        if (sal>1184.00){
+                            error=false;
+                        }else{
+                            JOptionPane.showMessageDialog(null,"Sueldo menor al salario minimo");
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Formato de sueldo no valido");
+                    }
+
+                 } break;
+                 case "equipo":{
+                     if (valor.matches("^[0-9]{4}$")){
+                         error=false;
+                     }else {
+                         JOptionPane.showMessageDialog(null,"No es valido el codigo de ese equipo");
+                     }
+
+                 } break;
+             }
+
         }while(error);
 
-        String valor = JOptionPane.showInputDialog("Ingrese el valor");
+
 
         String mensaje = jugadorDAO.modJugador(cod,propiedad,valor);
+        JOptionPane.showMessageDialog(null,mensaje);
 
     }
 
