@@ -57,7 +57,7 @@ public class Main {
         };
 
         String[] menuOptsCrudAdmin = {
-                "Jugadores", "Equipos", "Enfrentamiento", "Jornada", "Competición"
+                "Jugadores", "Equipos", "Modificar Enfrentamiento", "Jornada", "Competición"
         };
 
         String[] menuOptsCrudOptsJugador = {
@@ -66,10 +66,6 @@ public class Main {
 
         String[] menuOptsCrudOptsEquipo = {
                 "Alta Equipo", "Baja Equipo", "Modificación Equipo", "Mostrar Equipo"
-        };
-
-        String[] menuOptsCrudOptsEnfrentamiento = {
-                "Nuevo Enfrentamiento", "Borrar Enfrentamiento", "Modificar Enfrentamiento", "Mostrar Enfrentamiento"
         };
 
         String[] menuOptsCrudOptsJornada = {
@@ -156,19 +152,7 @@ public class Main {
                                             }
                                             break;
                                             case 2: {
-                                                String opcionStr012 = (String) JOptionPane.showInputDialog(null, "Selecciona una opción",
-                                                        "Menú - Administrador - CRUD - Enfrentamiento", JOptionPane.QUESTION_MESSAGE, null, menuOptsCrudOptsEnfrentamiento, menuOptsCrudOptsEnfrentamiento[0]);
-
-                                                if (opcionStr012 != null) {
-                                                    int opcion012 = Arrays.asList(menuOptsCrudOptsEnfrentamiento).indexOf(opcionStr012);
-
-                                                    switch (opcion012) {
-//                                                        case 0 -> // Nuevo Enfrentamiento
-//                                                        case 1 -> // Borrar Enfrentamiento
-//                                                        case 2 -> // Modificar Enfrentamiento
-//                                                        case 3 -> // Mostrar Enfrentamiento
-                                                    }
-                                                }
+                                                enfrentamientoController.modificar();
                                             }
                                             break;
                                             case 3: {
