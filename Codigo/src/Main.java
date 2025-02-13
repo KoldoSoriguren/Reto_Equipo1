@@ -178,10 +178,10 @@ public class Main {
                                                     int opcion011 = Arrays.asList(menuOptsCrudOptsCompeticion).indexOf(opcionStr011);
 
                                                     switch (opcion011) {
-//                                                        case 0 -> // Nueva Competición
-//                                                        case 1 -> // Borrar Competición
-//                                                        case 2 -> // Modificar Competición
-//                                                        case 3 -> // Mostrar Competición
+//                                                        case 0 -> //TODO Nueva Competición
+//                                                        case 1 -> //TODO Borrar Competición
+//                                                        case 2 -> //TODO Modificar Competición
+//                                                        case 3 -> //TODO Mostrar Competición
                                                     }
                                                 }
                                             }
@@ -189,14 +189,14 @@ public class Main {
                                         }
                                     }
                                 }break;
-//                                case 1: {} // Cerrar Etapa
+//                                case 1: {} //TODO Cerrar Etapa
                                 case 2: {
                                   jornadaController.generarJornada(); // Generar Calendario
                                 }break;
                                 case 3: {
                                     enfrentamientoController.agregarResultados(); // Introducir Resultados
                                 }
-//                                case 4: {} // Ver todos los informes
+//                                case 4: {} //TODO Ver todos los informes
                             }
                         }
                     }
@@ -208,10 +208,10 @@ public class Main {
                         if (opcionStr1 != null) {
                             int opcion1 = Arrays.asList(menuOptsTipoUsuario).indexOf(opcionStr1);
 
-//                            switch (opcion2) {
-//                                case 0 -> // Visualizar equipo con sus jornadas
-//                                case 1 -> // Visualizar resultados
-//                            }
+                            switch (opcion1) {
+                                case 0 -> jornadaController.buscarJornadasPorEquipo(); // Visualizar equipo con sus jornadas
+//                                case 1 -> //TODO Visualizar resultados
+                            }
                         }
                     }
                     break;

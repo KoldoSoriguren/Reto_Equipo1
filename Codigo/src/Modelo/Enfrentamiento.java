@@ -74,6 +74,10 @@ public class Enfrentamiento {
         this.resultado = resultado;
     }
 
+    public boolean participaEquipo(Equipo equipo) {
+        return equipo1.equals(equipo) || equipo2.equals(equipo);
+    }
+
     public String toString(){
         return equipo1.getNombreEquipo() + " vs " + equipo2.getNombreEquipo() + " Hora: " + hora;
     }

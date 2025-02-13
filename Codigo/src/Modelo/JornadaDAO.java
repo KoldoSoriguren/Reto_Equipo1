@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class JornadaDAO {
     private final List<Jornada> listaJornadas;
@@ -71,12 +72,16 @@ public class JornadaDAO {
 
         if (jornadaAModificar.isPresent()) {
             jornadaAModificar.get().setFechaJornada(fechaJornada);
-            JOptionPane.showMessageDialog(null, "Jornada modificada con éxito.");
         } else {
             JOptionPane.showMessageDialog(null, "No se encontró la jornada con código: " + codJornada, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
+    public List<Jornada> getJornadasPorEquipo(Equipo equipo) {
+        return listaJornadas.stream()
+                .filter(jornada -> jornada.contieneEquipo(equipo))
+                .collect(Collectors.toList());
+    }
 
     public void mostrarJornadas() {
         StringBuilder mensajeFinal = new StringBuilder("JORNADAS\n");
@@ -85,5 +90,20 @@ public class JornadaDAO {
         }
 
         JOptionPane.showMessageDialog(null, mensajeFinal.toString(), "Jornadas", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public StringBuilder mostrarJornadasPorEquipo(Equipo equipo) {
+        StringBuilder mensaje = new StringBuilder();
+
+        if (listaJornadas.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El equipo " + equipo.getNombreEquipo() + " no tiene jornadas registradas.",
+                    "Información", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            mensaje = new StringBuilder(equipo.getNombreEquipo() + " participa en las siguientes jornadas" + ":\n");
+            for (Jornada jornada : listaJornadas) {
+                mensaje.append("- Jornada: ").append(jornada.getCodJornada()).append("\n");
+            }
+        }
+        return mensaje;
     }
 }

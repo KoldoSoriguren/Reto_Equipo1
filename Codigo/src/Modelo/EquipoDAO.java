@@ -13,7 +13,7 @@ public class EquipoDAO {
         listaEquipos.add(new Equipo("E2", "Team B", LocalDate.of(2005, 8, 23)));
         listaEquipos.add(new Equipo("E3", "Team C", LocalDate.of(2010, 3, 10)));
         listaEquipos.add(new Equipo("E4", "Team D", LocalDate.of(2015, 12, 1)));
-        listaEquipos.add(new Equipo("E5", "Team E", LocalDate.of(2020, 7, 7)));
+//        listaEquipos.add(new Equipo("E5", "Team E", LocalDate.of(2020, 7, 7)));
     }
   
     public List<Equipo> obtenerEquipos() {
@@ -29,8 +29,17 @@ public class EquipoDAO {
     }
 
     private Optional<Equipo> buscarEquipoPorCod(String idEquipo){
-         Optional<Equipo> buscarEquip = listaEquipos.stream().filter(equipoABuscar-> equipoABuscar.getCodEquipo().equals(idEquipo)).findFirst();
+         Optional<Equipo> buscarEquip = listaEquipos.stream().filter(equipoABuscar ->
+                 equipoABuscar.getCodEquipo().equals(idEquipo))
+                 .findFirst();
          return buscarEquip;
+    }
+
+    public Equipo buscarEquipoPorNombre(String nombre) {
+        return listaEquipos.stream()
+                .filter(e -> e.getNombreEquipo().equalsIgnoreCase(nombre))
+                .findFirst()
+                .orElse(null);
     }
 
     public Equipo obtenerEquipo(String idEquipo){
@@ -54,7 +63,7 @@ public class EquipoDAO {
         Boolean a = true;
         Optional<Equipo> buscarEquip = listaEquipos.stream().filter(equipo -> equipo.getNombreEquipo().equals(nombre)).findFirst();
         if(buscarEquip.isPresent()){
-            a=false;
+            a = false;
         }
         return a;
     }
