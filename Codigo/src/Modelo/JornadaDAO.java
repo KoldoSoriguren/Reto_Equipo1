@@ -23,7 +23,7 @@ public class JornadaDAO {
             LocalTime horaInicial = LocalTime.of(9, 0);
 
             while (jornada.getListaEnfrentamientos().size() < equipos.size() / 2) {
-                // Genera los enfrentamientos automaticamente.
+                // Genera que equipo va ser Equipo1 y Equipo2 automaticamente.
                 Equipo e1 = equipos.get(rand.nextInt(equipos.size()));
                 Equipo e2 = equipos.get(rand.nextInt(equipos.size()));
 
@@ -31,7 +31,9 @@ public class JornadaDAO {
                 if (!e1.equals(e2) && !enfrentados.contains(e1.getNombreEquipo() + e2.getNombreEquipo()) &&
                         !enfrentados.contains(e2.getNombreEquipo() + e1.getNombreEquipo())) {
                 // Creamos los objetos y los añadimos al ArrayList
-                    Enfrentamiento enf = new Enfrentamiento("E" + i + jornada.getListaEnfrentamientos().size(), e1, e2, horaInicial);
+                    String codEnfrentamiento = String.format("E-%04d", i);
+
+                    Enfrentamiento enf = new Enfrentamiento(codEnfrentamiento, e1, e2, horaInicial);
 
                     jornada.addEnfrentamiento(enf);
                     enfrentamientoDAO.guardarEnfrentamientos(enf);

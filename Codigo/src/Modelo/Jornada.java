@@ -6,18 +6,11 @@ import java.util.List;
 
 public class Jornada {
     private String codJornada;
-    private String resultado;
     private LocalDate fechaJornada;
     private Competicion competicion;
     private List<Enfrentamiento> ListaEnfrentamientos;
 
     public Jornada() {
-    }
-
-    public Jornada(String cod_jornada, LocalDate fechaJornada, String resultado) {
-        this.codJornada = cod_jornada;
-        this.fechaJornada = fechaJornada;
-        this.resultado = resultado;
     }
 
     public Jornada(String codJornada, LocalDate fechaJornada) {
@@ -45,14 +38,6 @@ public class Jornada {
 
     public void setFechaJornada(LocalDate fecha_jornada) {
         this.fechaJornada = fecha_jornada;
-    }
-
-    public String getResultado() {
-        return resultado;
-    }
-
-    public void setResultado(String resultado) {
-        this.resultado = resultado;
     }
 
     public List<Enfrentamiento> getListaEnfrentamientos() {

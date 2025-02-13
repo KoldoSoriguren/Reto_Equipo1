@@ -193,7 +193,9 @@ public class Main {
                                 case 2: {
                                   jornadaController.generarJornada(); // Generar Calendario
                                 }break;
-//                                case 3: {} // Introducir Resultados
+                                case 3: {
+                                    enfrentamientoController.agregarResultados();
+                                } // Introducir Resultados
 //                                case 4: {} // Ver todos los informes
                             }
                         }

@@ -6,6 +6,7 @@ public class Enfrentamiento {
     private String codEnfrentamiento;
     private String string;
     private LocalTime hora;
+    private String resultado;
     private Equipo equipo1;
     private Equipo equipo2;
 
@@ -17,6 +18,12 @@ public class Enfrentamiento {
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
         this.hora = hora;
+    }
+
+    public Enfrentamiento(Equipo equipo1, String resultado, Equipo equipo2) {
+        this.equipo1 = equipo1;
+        this.resultado = resultado;
+        this.equipo2 = equipo2;
     }
 
     public String getCodEnfrentamiento() {
@@ -59,7 +66,19 @@ public class Enfrentamiento {
         this.equipo2 = equipo2;
     }
 
+    public String getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
+    }
+
     public String toString(){
         return equipo1.getNombreEquipo() + " vs " + equipo2.getNombreEquipo() + " Hora: " + hora;
+    }
+
+    public String toStringResultado() {
+        return equipo1 + " vs " + equipo2 + " | Resultado: " + resultado;
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EnfrentamientoDAO {
-    private List<Enfrentamiento> ListaEnfrentamientos;
+    private final List<Enfrentamiento> ListaEnfrentamientos;
 
     public EnfrentamientoDAO() {
         ListaEnfrentamientos = new ArrayList<Enfrentamiento>();
@@ -16,5 +16,9 @@ public class EnfrentamientoDAO {
 
     public List<Enfrentamiento> getListaEnfrentamientos() {
         return ListaEnfrentamientos;
+    }
+
+    public void agregarResultados(){
+
     }
 }

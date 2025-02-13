@@ -34,7 +34,6 @@ public class JugadorDAO {
             mensaje = "No existe el jugador";
         }
         return mensaje;
-
     }
 
     public Jugador mostrarJugador(String cod) {
