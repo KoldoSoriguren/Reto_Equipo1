@@ -23,8 +23,8 @@ public class EquipoDAO {
     }
 
     private Optional<Equipo> buscarEquipoPorCod(String idEquipo){
-         Optional<Equipo> buscareEquip = listaEquipos.stream().filter(equipoABuscar-> equipoABuscar.getCodEquipo().equals(idEquipo)).findFirst();
-         return buscareEquip;
+         Optional<Equipo> buscarEquip = listaEquipos.stream().filter(equipoABuscar-> equipoABuscar.getCodEquipo().equals(idEquipo)).findFirst();
+         return buscarEquip;
     }
 
     public Equipo obtenerEquipo(String idEquipo){
@@ -34,12 +34,12 @@ public class EquipoDAO {
 
     public void añadirJugador(Jugador jugador, String idEquipo){
         Optional<Equipo> buscarEquip = buscarEquipoPorCod(idEquipo);
-        buscarEquip.get().añadirJugador(jugador);
+        buscarEquip.get().altaJugador(jugador);
     }
 
     public void eliminarJugador(Jugador jugador, String idEquipo){
         Optional<Equipo> buscarEquip = buscarEquipoPorCod(idEquipo);
-        buscarEquip.get().eliminarJugador(jugador);
+        buscarEquip.get().bajaJugador(jugador);
     }
 }
 

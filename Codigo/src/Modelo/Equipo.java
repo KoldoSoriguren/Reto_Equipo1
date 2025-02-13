@@ -53,10 +53,20 @@ public class Equipo {
     public void setJugadores(ArrayList<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
-    public void añadirJugador(Jugador jugador) {
+
+    public void altaJugador(Jugador jugador) {
         this.jugadores.add(jugador);
     }
-    public void eliminarJugador(Jugador jugador) {
+
+    public void bajaJugador(Jugador jugador) {
         this.jugadores.remove(jugador);
+    }
+
+    @Override
+    public String toString() {
+        return "Código Equipo -> " + codEquipo + "\n " +
+                "Nombre Equipo -> " + nombreEquipo + "\n " +
+                "Fecha Fundación -> " + fechaFund
+                ;
     }
 }
