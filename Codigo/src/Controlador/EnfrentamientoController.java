@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.Enfrentamiento;
 import Modelo.EnfrentamientoDAO;
 
 public class EnfrentamientoController {
@@ -7,5 +8,9 @@ public class EnfrentamientoController {
 
     public EnfrentamientoController(EnfrentamientoDAO enfrentamientoDAO) {
         this.enfrentamientoDAO = enfrentamientoDAO;
+    }
+
+    public void modificar() {
+
     }
 }
