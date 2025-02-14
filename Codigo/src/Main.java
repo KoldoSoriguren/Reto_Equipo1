@@ -29,11 +29,11 @@ public class Main {
     }
 
     public static void crearObjetos() {
-        jugadorDAO = new JugadorDAO();
-        jugadorController = new JugadorController(jugadorDAO);
-
         equipoDAO = new EquipoDAO();
         equipoController = new EquipoController(equipoDAO);
+
+        jugadorDAO = new JugadorDAO();
+        jugadorController = new JugadorController(jugadorDAO, equipoDAO);
 
         competicionDAO = new CompeticionDAO();
         competicionController = new CompeticionController(competicionDAO);
@@ -57,7 +57,7 @@ public class Main {
         };
 
         String[] menuOptsCrudAdmin = {
-                "Jugadores", "Equipos", "Enfrentamiento", "Jornada", "Competición"
+                "Jugadores", "Equipos", "Modificar Enfrentamiento", "Jornada", "Competición"
         };
 
         String[] menuOptsCrudOptsJugador = {
@@ -66,10 +66,6 @@ public class Main {
 
         String[] menuOptsCrudOptsEquipo = {
                 "Alta Equipo", "Baja Equipo", "Modificación Equipo", "Mostrar Equipo"
-        };
-
-        String[] menuOptsCrudOptsEnfrentamiento = {
-                "Nuevo Enfrentamiento", "Borrar Enfrentamiento", "Modificar Enfrentamiento", "Mostrar Enfrentamiento"
         };
 
         String[] menuOptsCrudOptsJornada = {
@@ -156,19 +152,7 @@ public class Main {
                                             }
                                             break;
                                             case 2: {
-                                                String opcionStr012 = (String) JOptionPane.showInputDialog(null, "Selecciona una opción",
-                                                        "Menú - Administrador - CRUD - Enfrentamiento", JOptionPane.QUESTION_MESSAGE, null, menuOptsCrudOptsEnfrentamiento, menuOptsCrudOptsEnfrentamiento[0]);
-
-                                                if (opcionStr012 != null) {
-                                                    int opcion012 = Arrays.asList(menuOptsCrudOptsEnfrentamiento).indexOf(opcionStr012);
-
-                                                    switch (opcion012) {
-//                                                        case 0 -> // Nuevo Enfrentamiento
-//                                                        case 1 -> // Borrar Enfrentamiento
-//                                                        case 2 -> // Modificar Enfrentamiento
-//                                                        case 3 -> // Mostrar Enfrentamiento
-                                                    }
-                                                }
+                                                enfrentamientoController.modificar(); // Modificar Enfrentamiento
                                             }
                                             break;
                                             case 3: {
@@ -198,6 +182,7 @@ public class Main {
                                                         case 1 -> competicionController.eliminarCompeticion();
                                                         case 2 -> competicionController.modificarCompeticion();
                                                         case 3 -> competicionController.mostrarCompeticiones();
+
                                                     }
                                                 }
                                             }
@@ -205,12 +190,14 @@ public class Main {
                                         }
                                     }
                                 }break;
-//                                case 1: {} // Cerrar Etapa
+//                                case 1: {} //TODO Cerrar Etapa
                                 case 2: {
                                   jornadaController.generarJornada(); // Generar Calendario
                                 }break;
-//                                case 3: {} // Introducir Resultados
-//                                case 4: {} // Ver todos los informes
+                                case 3: {
+                                    enfrentamientoController.agregarResultados(); // Introducir Resultados
+                                }
+//                                case 4: {} //TODO Ver todos los informes
                             }
                         }
                     }
@@ -222,10 +209,10 @@ public class Main {
                         if (opcionStr1 != null) {
                             int opcion1 = Arrays.asList(menuOptsTipoUsuario).indexOf(opcionStr1);
 
-//                            switch (opcion2) {
-//                                case 0 -> // Visualizar equipo con sus jornadas
-//                                case 1 -> // Visualizar resultados
-//                            }
+                            switch (opcion1) {
+                                case 0 -> jornadaController.buscarJornadasPorEquipo(); // Visualizar equipo con sus jornadas
+//                                case 1 -> //TODO Visualizar resultados
+                            }
                         }
                     }
                     break;

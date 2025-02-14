@@ -1,13 +1,11 @@
 package Controlador;
 
-import Modelo.EnfrentamientoDAO;
-import Modelo.EquipoDAO;
-import Modelo.Jornada;
-import Modelo.JornadaDAO;
+import Modelo.*;
 
 import javax.swing.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class JornadaController {
     private final JornadaDAO jornadaDAO;
@@ -56,6 +54,21 @@ public class JornadaController {
 
         }catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error " + e);
+        }
+    }
+
+    public void buscarJornadasPorEquipo() {
+        StringBuilder mensaje;
+
+        String nombreEquipo = JOptionPane.showInputDialog("Ingrese el nombre del equipo para buscar sus jornadas:");
+        Equipo equipoBuscado = equipoDAO.buscarEquipoPorNombre(nombreEquipo);
+
+        if (equipoBuscado != null) {
+            mensaje = jornadaDAO.mostrarJornadasPorEquipo(equipoBuscado);
+            JOptionPane.showMessageDialog(null, mensaje.toString(), "Jornadas del Equipo", JOptionPane.INFORMATION_MESSAGE);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Equipo no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

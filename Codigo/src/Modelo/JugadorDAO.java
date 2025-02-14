@@ -25,12 +25,12 @@ public class JugadorDAO {
         Optional<Jugador> jugador = listaJugadores.stream().filter(jugadorABuscar -> jugadorABuscar.getCodJugador().equals(cod)).findFirst();
         if (jugador.isPresent()) {
             listaJugadores.remove(jugador.get());
+            equipoDAO.eliminarJugador(jugador.get(), jugador.get().getEquipo().getCodEquipo());
             mensaje = "Jugador eliminado";
         }else {
             mensaje = "No existe el jugador";
         }
         return mensaje;
-
     }
 
     public Jugador mostrarJugador(String cod) {
@@ -45,51 +45,62 @@ public class JugadorDAO {
         return j;
     }
 
-    public String modJugador(String cod, String valor, String propiedad){
+    public String modJugador(String cod, String nuevoDato, String propiedad){
+        String mensaje="";
         Optional<Jugador> jugador = listaJugadores.stream().filter(jugadorABuscar -> jugadorABuscar.getCodJugador().equals(cod)).findFirst();
         propiedad.toUpperCase();
         if (jugador.isPresent()) {
             switch (propiedad) {
                 case "NOMBRE":{
-                    String nombrenu = JOptionPane.showInputDialog("Ingrese el nombre del jugador");
-                    jugador.get().setNombre(nombrenu);
+
+                    jugador.get().setNombre(nuevoDato);
+                    mensaje = "Jugador actualizado";
                 }break;
                 case "NICKNAME":{
-                    String nickname = JOptionPane.showInputDialog("Ingrese el nickname del jugador");
-                    jugador.get().setNickname(nickname);
+
+                    jugador.get().setNickname(nuevoDato);
+                    mensaje = "Jugador actualizado";
                 }break;
                 case "APELLIDO":{
-                    String apellid=JOptionPane.showInputDialog("Ingrese el apellido del jugador");
-                    jugador.get().setApellido(apellid);
+
+                    jugador.get().setApellido(nuevoDato);
+                    mensaje = "Jugador actualizado";
                 }break;
                 case "SUELDO":{
-                    Double sueldo=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el sueldo"));
-                    jugador.get().setSueldo(sueldo);
+                    Double salario= Double.valueOf(nuevoDato);
+                    jugador.get().setSueldo(salario);
+                    mensaje = "Jugador actualizado";
                 }break;
                 case "NACIONALIDAD":{
-                    String nacionalidad=JOptionPane.showInputDialog("Ingrese la nacionalidad del jugador");
-                    jugador.get().setNacionalidad(nacionalidad);
+                    jugador.get().setNacionalidad(nuevoDato);
+                    mensaje = "Jugador actualizado";
                 }break;
                 case "ROL":{
-                    Roles rol= modirole(cod,valor,propiedad);
+                    Roles rol= modirole(cod, nuevoDato, propiedad);
                     jugador.get().setRol(rol);
+                    mensaje = "Jugador actualizado";
                 }break;
                 case "EQUIPO":{
-                        String codiequip=JOptionPane.showInputDialog("Ingrese el codigo del equipo del jugador");
-                        equipoDAO.eliminarJugador(jugador.get(),codiequip);
-                        jugador.get().setEquipo(equipoDAO.obtenerEquipo(codiequip));
-                        equipoDAO.añadirJugador(jugador.get(),codiequip);
+                        equipoDAO.eliminarJugador(jugador.get(), nuevoDato);
+
+                        jugador.get().setEquipo(equipoDAO.obtenerEquipo(nuevoDato));
+
+                        equipoDAO.agregarJugador(jugador.get());
+                        if (jugador.get().getEquipo() == null) {
+                            mensaje = "Equipo no encontrado tu jugador se declarara como agente libre";
+                        }
 
 
                 }break;
                 case "FECHANACIMIENTO":{
                     jugador.get().setFechaNacimiento(modifech());
+                    mensaje = "Jugador actualizado";
                 }break;
             }
         }else{
-            JOptionPane.showMessageDialog(null, "No existe el jugador");
+            mensaje = "No existe el jugador";
         }
-        return null; // Temporal, WIP
+        return mensaje;
     }
     public Roles modirole(String cod, String valor, String propiedad){
        Roles rol=null;
@@ -109,18 +120,15 @@ public class JugadorDAO {
                rol=Roles.CONTROLADOR;
            }break;
        }
-
-
-
        return rol;
     }
     public LocalDate modifech(){
         try {
-            boolean error=false;
+            boolean error = false;
             do {
-                DateTimeFormatter formato= DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                String fecha=JOptionPane.showInputDialog("Ingrese la fecha de nacimiento del jugador en dormato dd/mm/yyyy");
-                LocalDate fechaInicio=LocalDate.parse(fecha, formato);
+                DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                String fecha=JOptionPane.showInputDialog("Ingrese la fecha de nacimiento del jugador (dd/mm/yyyy)");
+                LocalDate fechaInicio = LocalDate.parse(fecha, formato);
 
                 return fechaInicio;
             }while (!error);

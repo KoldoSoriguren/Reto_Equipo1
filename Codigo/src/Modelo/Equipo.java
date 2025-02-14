@@ -7,19 +7,13 @@ public class Equipo {
     private String codEquipo;
     private String nombreEquipo;
     private LocalDate fechaFund;
-    private ArrayList<Jugador> jugadores;
+    private ArrayList<Jugador> listaJugadores;
 
     public Equipo(String codEquipo, String nombreEquipo, LocalDate fechaFund) {
         this.codEquipo = codEquipo;
         this.nombreEquipo = nombreEquipo;
         this.fechaFund = fechaFund;
-    }
-
-    public Equipo(String codEquipo, String nombreEquipo, LocalDate fechaFund, ArrayList<Jugador> jugadores) {
-        this.codEquipo = codEquipo;
-        this.nombreEquipo = nombreEquipo;
-        this.fechaFund = fechaFund;
-        this.jugadores = jugadores;
+        this.listaJugadores = new ArrayList<>();
     }
 
     public String getCodEquipo() {
@@ -46,20 +40,20 @@ public class Equipo {
         this.fechaFund = fechaFund;
     }
 
-    public ArrayList<Jugador> getJugadores() {
-        return jugadores;
+    public ArrayList<Jugador> getListaJugadores() {
+        return listaJugadores;
     }
 
-    public void setJugadores(ArrayList<Jugador> jugadores) {
-        this.jugadores = jugadores;
+    public void setListaJugadores(ArrayList<Jugador> listaJugadores) {
+        this.listaJugadores = listaJugadores;
     }
 
     public void altaJugador(Jugador jugador) {
-        this.jugadores.add(jugador);
+        this.listaJugadores.add(jugador);
     }
 
     public void bajaJugador(Jugador jugador) {
-        this.jugadores.remove(jugador);
+        this.listaJugadores.remove(jugador);
     }
 
     @Override
