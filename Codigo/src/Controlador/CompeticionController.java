@@ -122,6 +122,13 @@ public class CompeticionController {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return LocalDate.parse(fecha, dateTimeFormatter);
     }
+    public void visualicarRes(){
+        String codigo = JOptionPane.showInputDialog("Ingrese el codigo de la competicion cuyos resultados quieres ver:");
+        StringBuilder lista= competicionDAO.listaGanador(codigo);//crea una arraylist que rellenara en la siguiente funcion
+
+        JOptionPane.showMessageDialog(null, lista);
+
+    }
 
     }
 
