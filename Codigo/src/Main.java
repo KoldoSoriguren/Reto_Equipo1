@@ -1,5 +1,4 @@
 import Controlador.*;
-import Excepcion.DatoNoValido;
 import Modelo.*;
 
 import javax.swing.*;
@@ -46,7 +45,7 @@ public class Main {
         competicionController = new CompeticionController(competicionDAO, jornadaDAO);
     }
 
-    public static void menu() throws DatoNoValido {
+    public static void menu() {
         boolean terminar = false;
 
         String[] menuOptsRoles = {
@@ -129,22 +128,10 @@ public class Main {
                                                     int opcion011 = Arrays.asList(menuOptsCrudOptsEquipo).indexOf(opcionStr011);
 
                                                     switch (opcion011) {
-                                                        case 0: {
-                                                            equipoController.altaValidarDatosEquipo(); // Alta equipo
-                                                        }
-                                                        break;
-                                                        case 1: {
-                                                            equipoController.borrar(); // Baja equipo
-                                                        }
-                                                        break;
-                                                        case 2: {
-                                                            equipoController.modificar(); // Modificar equipo
-                                                        }
-                                                        break;
-                                                        case 3: {
-                                                            equipoController.mostrar(); // Mostrar equipo
-                                                        }
-                                                        break;
+                                                        case 0 -> equipoController.altaValidarDatosEquipo(); // Alta equipo
+                                                        case 1 -> equipoController.borrar(); // Baja equipo
+                                                        case 2 -> equipoController.modificar(); // Modificar equipo
+                                                        case 3 -> equipoController.mostrar(); // Mostrar equipo
                                                     }
                                                 }
                                             }
@@ -211,9 +198,8 @@ public class Main {
                             int opcion1 = Arrays.asList(menuOptsTipoUsuario).indexOf(opcionStr1);
 
                             switch (opcion1) {
-
-                                case 0 -> jornadaController.buscarJornadasPorEquipo(); // Visualizar equipo con sus jornadas
-                               case 1 -> competicionController.visualizarResult(); // Visualizar resultados
+                                case 0 -> jornadaController.buscarJornadasPorEquipo(); // Visualizar equipo con sus jornadas             
+                                case 1 -> competicionController.visualizarResult(); // Visualizar resultados
                             }
                         }
                     }

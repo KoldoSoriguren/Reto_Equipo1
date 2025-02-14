@@ -102,16 +102,8 @@ public class Jugador {
         return sueldo;
     }
 
-    public double setSueldo(double sueldo) {
-        try {
-            if (sueldo >= 1184)
-                this.sueldo = sueldo;
-            else
-                throw new DatoNoValido("El sueldo no puede ser inferior al SMI (1184 €)");
-        } catch (DatoNoValido e) {
-            this.sueldo = sueldo;
-        }
-        return sueldo;
+    public void setSueldo(double sueldo) {
+        this.sueldo = sueldo;
     }
 
     public Equipo getEquipo() {
