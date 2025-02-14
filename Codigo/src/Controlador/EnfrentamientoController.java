@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.util.List;
 
 public class EnfrentamientoController {
-    private EnfrentamientoDAO enfrentamientoDAO;
+    private final EnfrentamientoDAO enfrentamientoDAO;
 
     public EnfrentamientoController(EnfrentamientoDAO enfrentamientoDAO) {
         this.enfrentamientoDAO = enfrentamientoDAO;
