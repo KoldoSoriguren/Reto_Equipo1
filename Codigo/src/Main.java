@@ -201,7 +201,9 @@ public class Main {
                                 case 3: {
                                     enfrentamientoController.agregarResultados(); // Introducir Resultados
                                 }
-//                                case 4: {} //TODO Ver todos los informes
+                                case 4: {
+                                    competicionController.mostrarInformes(); // Ver todos los informes
+                                }
                             }
                         }
                     }
