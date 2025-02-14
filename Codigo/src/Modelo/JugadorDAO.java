@@ -38,57 +38,26 @@ public class JugadorDAO {
     }
 
     public Jugador mostrarJugador(String cod) {
-        Jugador j;
+        Jugador jugador;
 
-        Optional<Jugador> jugador = listaJugadores.stream().filter(jugadorABuscar -> jugadorABuscar.getDni().equals(cod)).findFirst();
-        if (jugador.isPresent()) {
-            j = jugador.get();
+        Optional<Jugador> jugadorOpt = listaJugadores.stream().filter(jugadorABuscar -> jugadorABuscar.getDni().equals(cod)).findFirst();
+        if (jugadorOpt.isPresent()) {
+            jugador = jugadorOpt.get();
         } else {
-            j = null;
+            jugador = null;
         }
-        return j;
+        return jugador;
+    }
+    public Boolean verificarDni(String dni) {
+        boolean verificacion = true;
+
+        Optional<Jugador> buscarEquip = listaJugadores.stream().filter(equipo -> equipo.getDni().equals(dni)).findFirst();
+
+        if (buscarEquip.isPresent())
+            verificacion = false;
+
+        return verificacion;
     }
 
-    public Roles modirole(String cod, String valor, String propiedad) {
-        Roles rol = null;
 
-        propiedad.toUpperCase();
-        switch (valor) {
-            case "DUELISTA": {
-                rol = Roles.DUELISTA;
-            }
-            break;
-            case "INICIADOR": {
-                rol = Roles.INICIADOR;
-            }
-            break;
-            case "CONTROLADOR": {
-                rol = Roles.CENTINELA;
-            }
-            break;
-            case "CENTINELA": {
-                rol = Roles.CONTROLADOR;
-            }
-            break;
-        }
-        return rol;
-    }
-
-    public LocalDate modifech() {
-        try {
-            boolean error = false;
-            do {
-                DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                String fecha = JOptionPane.showInputDialog("Ingrese la fecha de nacimiento del jugador (dd/mm/yyyy)");
-                LocalDate fechaInicio = LocalDate.parse(fecha, formato);
-
-                return fechaInicio;
-            } while (!error);
-
-        } catch (DateTimeException e) {
-            JOptionPane.showMessageDialog(null, "Fecha incorrecta");
-        }
-        return null;
-
-    }
 }

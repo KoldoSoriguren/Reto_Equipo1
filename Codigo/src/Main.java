@@ -207,6 +207,7 @@ public class Main {
                     case 2: {
                         terminar = true;
                     }
+
                     break;
                     default: {
                         JOptionPane.showMessageDialog(null, "Opción no válida");

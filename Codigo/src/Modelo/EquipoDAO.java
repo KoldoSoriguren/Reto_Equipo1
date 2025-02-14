@@ -61,13 +61,15 @@ public class EquipoDAO {
         buscarEquip.get().bajaJugador(jugador);
     }
 
-    public Boolean verificarNom(String nombre) {
-        Boolean a = true;
+    public Boolean verificarNombre(String nombre) {
+        boolean verificacion = true;
+
         Optional<Equipo> buscarEquip = listaEquipos.stream().filter(equipo -> equipo.getNombreEquipo().equals(nombre)).findFirst();
-        if (buscarEquip.isPresent()) {
-            a = false;
-        }
-        return a;
+
+        if (buscarEquip.isPresent())
+            verificacion = false;
+
+        return verificacion;
     }
 }
 
