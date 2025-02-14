@@ -28,6 +28,7 @@ public class CompeticionController {
         }
 
     }
+
     public void modificarCompeticion(){
         boolean continuar=true;
         while(continuar){
@@ -35,8 +36,7 @@ public class CompeticionController {
                 String cod=validarDato("cod","Introduzca el código de la competicion ha modificar","^[0-9]{4}$");
                 Competicion comp=competicionDAO.buscarCompeticion(cod);
                 if(comp==null){
-                    JOptionPane.showMessageDialog(null,"Competicion no encontrado");
-                    continuar=true;
+                    throw new Exception();
                 }
                 String nombre=validarDato("nombre","Introduzca el nuevo nombre de la competicion","^[A-Z][a-z]*$");
                 comp.setNombre(nombre);
@@ -55,6 +55,7 @@ public class CompeticionController {
                 continuar=false;
             }catch (Exception e){
                 JOptionPane.showMessageDialog(null,"Error al modificar Competicion");
+                continuar=true;
             }
         }
 
@@ -66,14 +67,15 @@ public class CompeticionController {
                 String cod=validarDato("codigo","Introduzca el codigo de la competicion ha eliminar","^[0-9]{4}");
                 Competicion c=competicionDAO.buscarCompeticion(cod);
                 if(c==null){
-                    JOptionPane.showMessageDialog(null,"Competicion no encontrado");
-                    continuar=true;
+                    throw new Exception();
+
                 }
                 competicionDAO.eliminarCompeticion(c);
                 JOptionPane.showMessageDialog(null,"Competicion eliminada correctamente");
                 continuar=false;
             }catch (Exception e){
                 JOptionPane.showMessageDialog(null,"Error al eliminar Competicion");
+                continuar=true;
             }
         }
     }
