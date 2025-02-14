@@ -92,7 +92,8 @@ public class Main {
                         String opcionStr0 = (String) JOptionPane.showInputDialog(null, "Selecciona una opción",
                                 "Menú - Administrador", JOptionPane.QUESTION_MESSAGE, null, menuOptsTipoAdmin, menuOptsTipoAdmin[0]);
 
-                        if (opcionStr0 != null) {
+                        if (opcionStr0 != null) 
+                        {
                             int opcion0 = Arrays.asList(menuOptsTipoAdmin).indexOf(opcionStr0);
 
                             switch (opcion0) {
@@ -175,7 +176,8 @@ public class Main {
                                     }
                                 }
                                 break;
-//                                case 1: {} //TODO Cerrar Etapa
+                              case 1: {competicionController.ModificarSuEstado();
+                              } //TODO Cerrar Etapa
                                 case 2: {
                                     jornadaController.generarJornada(); // Generar Calendario
                                 }

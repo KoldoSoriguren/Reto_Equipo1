@@ -2,6 +2,7 @@ package Modelo;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class CompeticionDAO {
     private final ArrayList<Competicion> listaCompeticiones;
@@ -123,6 +124,7 @@ public class CompeticionDAO {
         if (listaGanador.length() == 0) {
             listaGanador.append("No se ha encontrado la competición");
         }
+
         return listaGanador;
     }
 
@@ -173,5 +175,4 @@ public class CompeticionDAO {
         }
         return listaInforme;
     }
-
 }
