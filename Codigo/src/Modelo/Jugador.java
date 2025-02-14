@@ -1,11 +1,13 @@
 package Modelo;
 
+import Excepcion.DatoNoValido;
+
 import java.time.LocalDate;
 
 public class Jugador {
-    private String codJugador;
+    private String dni;
     private String nombre;
-    private String apellido;
+    private String apellidos;
     private String nacionalidad;
     private LocalDate fechaNacimiento;
     private String nickname;
@@ -15,9 +17,9 @@ public class Jugador {
 
     public Jugador(String codJugador, String nombre, String apellido, String nacionalidad, LocalDate fechaNacimiento,
                    String nickname, Roles rol, double sueldo, Equipo equipo) {
-        this.codJugador = codJugador;
+        this.dni = codJugador;
         this.nombre = nombre;
-        this.apellido = apellido;
+        this.apellidos = apellido;
         this.nacionalidad = nacionalidad;
         this.fechaNacimiento = fechaNacimiento;
         this.nickname = nickname;
@@ -30,7 +32,7 @@ public class Jugador {
     }
 
     //    Funciones:
-        private Roles validarRol(String rolIngresado) {
+    private Roles validarRol(String rolIngresado) {
         for (Roles r : Roles.values()) {
             if (r.name().equalsIgnoreCase(rolIngresado)) {
                 return r;
@@ -40,12 +42,12 @@ public class Jugador {
     }
 
     //    Getter and Setter:
-    public String getCodJugador() {
-        return codJugador;
+    public String getDni() {
+        return dni;
     }
 
-    public void setCodJugador(String codJugador) {
-        this.codJugador = codJugador;
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
@@ -56,12 +58,12 @@ public class Jugador {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getNacionalidad() {
@@ -100,8 +102,16 @@ public class Jugador {
         return sueldo;
     }
 
-    public void setSueldo(double sueldo) {
-        this.sueldo = sueldo;
+    public double setSueldo(double sueldo) {
+        try {
+            if (sueldo >= 1184)
+                this.sueldo = sueldo;
+            else
+                throw new DatoNoValido("El sueldo no puede ser inferior al SMI (1184 €)");
+        } catch (DatoNoValido e) {
+            this.sueldo = sueldo;
+        }
+        return sueldo;
     }
 
     public Equipo getEquipo() {
