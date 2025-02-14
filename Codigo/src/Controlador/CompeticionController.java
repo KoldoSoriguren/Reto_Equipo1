@@ -66,8 +66,8 @@ public class CompeticionController {
             if (estado != null) {
                 int opcion0 = Arrays.asList(ArrayEstado).indexOf(estado);
                 switch (opcion0) {
-                    case 0->comp.setEstado("activo");
-                    case 1->comp.setEstado("inactivo");
+                    case 0 -> comp.setEstado("activo");
+                    case 1 -> comp.setEstado("inactivo");
                 }
 
                 comp.setEstado(estado);
@@ -84,12 +84,7 @@ public class CompeticionController {
                 competicionDAO.modificarCompeticion(comp);
 
                 JOptionPane.showMessageDialog(null, "Competición modificada correctamente");
-
-            }catch (Exception e){
-                JOptionPane.showMessageDialog(null,"Error al modificar Competición");
             }
-
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al modificar Competición");
 

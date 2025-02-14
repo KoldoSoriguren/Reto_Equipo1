@@ -128,6 +128,7 @@ public class CompeticionDAO {
         return listaGanador;
     }
 
+
     public StringBuilder listarInformes() {
         StringBuilder listaInforme = new StringBuilder();
 
@@ -174,5 +175,15 @@ public class CompeticionDAO {
             listaInforme.append("No se ha encontrado la competición");
         }
         return listaInforme;
+    }
+    public String modificarEstado(String codigo){
+        Optional<Competicion> compe = listaCompeticiones.stream().filter(comp -> comp.getCodCompe().equals(codigo)).findFirst();
+        if (compe.isPresent()) {
+            compe.get().setEstado("inactivo");
+            return "etapa cerrada";
+        }else {
+            return "no se ha encontrado la competicion";
+        }
+
     }
 }
