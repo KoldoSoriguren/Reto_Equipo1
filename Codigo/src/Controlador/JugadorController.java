@@ -47,10 +47,15 @@ public class JugadorController {
             equipo = solicitarEquipo(mensaje);
         } while (equipo == null);
 
+        boolean verificacion = jugadorDAO.verificarDni(dni);
         Jugador jugador = new Jugador(dni, nombre, apellido, nacionalidad, fechaNac, nickname, rol, sueldo, equipo);
 
-        equipoDAO.agregarJugador(jugador);
-        jugadorDAO.agregarJugador(jugador);
+        if (verificacion) {
+            equipoDAO.agregarJugador(jugador);
+            jugadorDAO.agregarJugador(jugador);
+        } else
+            JOptionPane.showMessageDialog(null, "Ya hay un jugador registrado con ese dni");
+
     }
 
     public double solicitarSueldo(String mensaje) {
@@ -161,13 +166,13 @@ public class JugadorController {
 
     public void mostrarJugador() {
         String cod = JOptionPane.showInputDialog("Ingrese el código del jugador que quieres ver");
-        Jugador j = jugadorDAO.mostrarJugador(cod);
+        Jugador jugador = jugadorDAO.mostrarJugador(cod);
 
-        if (j == null) {
+        if (jugador == null)
             JOptionPane.showMessageDialog(null, "El jugador no existe");
-        } else {
-            JOptionPane.showMessageDialog(null, j.toString());
-        }
+        else
+            JOptionPane.showMessageDialog(null, jugador);
+
     }
 
     public void modificarJugador() {
