@@ -77,7 +77,7 @@ public class CompeticionDAO {
     public StringBuilder listaGanador(String codigo){
         StringBuilder listaGanador = new StringBuilder();
         for (int i = 0; i < listaCompeticiones.size(); i++) {
-            if (listaCompeticiones.get(i).getCod_compe().equals(codigo)) {
+            if (listaCompeticiones.get(i).getCodCompe().equals(codigo)) {
                 listaGanador.append("Competicion ");
                 listaGanador.append(listaCompeticiones.get(i).getNombre()).append("\n");
                 for (int j=0; j<listaCompeticiones.get(i).getListaJornadas().size(); j++) {
