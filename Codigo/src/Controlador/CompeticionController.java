@@ -16,7 +16,7 @@ public class CompeticionController {
     private CompeticionDAO competicionDAO;
     private JornadaDAO jornadaDAO;
 
-    public CompeticionController(CompeticionDAO competicionDAO) {
+    public CompeticionController(CompeticionDAO competicionDAO, JornadaDAO jornadaDAO) {
         this.competicionDAO = competicionDAO;
         this.jornadaDAO = new JornadaDAO();
     }
