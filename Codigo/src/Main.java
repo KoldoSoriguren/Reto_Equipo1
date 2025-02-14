@@ -113,12 +113,9 @@ public class Main {
                                                     int opcion010 = Arrays.asList(menuOptsCrudOptsJugador).indexOf(opcionStr010);
 
                                                     switch (opcion010) {
-                                                        case 0 ->
-                                                                jugadorController.altaValidarDatosJugador(); // Alta jugador
-                                                        case 1 ->
-                                                                jugadorController.eliminarJugador(); // Eliminar jugador
-                                                        case 2 ->
-                                                                jugadorController.modificarJugador(); // Modificar jugador
+                                                        case 0 -> jugadorController.altaValidarDatosJugador(); // Alta jugador
+                                                        case 1 -> jugadorController.eliminarJugador(); // Eliminar jugador
+                                                        case 2 -> jugadorController.modificarJugador(); // Modificar jugador
                                                         case 3 -> jugadorController.mostrarJugador(); // Mostrar jugador
                                                     }
                                                 }
@@ -165,10 +162,8 @@ public class Main {
 
                                                     switch (opcion013) {
                                                         case 0 -> jornadaController.borrarJornada(); // Borrar Jornada
-                                                        case 1 ->
-                                                                jornadaController.modificarJornada(); // Modificar Jornada
-                                                        case 2 ->
-                                                                jornadaController.mostrarJornadas(); // Mostrar Jornadas
+                                                        case 1 -> jornadaController.modificarJornada(); // Modificar Jornada
+                                                        case 2 -> jornadaController.mostrarJornadas(); // Mostrar Jornadas
                                                     }
                                                 }
                                             }
@@ -200,10 +195,10 @@ public class Main {
                                 break;
                                 case 3: {
                                     enfrentamientoController.agregarResultados(); // Introducir Resultados
-                                }
+                                }break;
                                 case 4: {
-                                    competicionController.mostrarInformes(); // Ver todos los informes
-                                }
+                                    competicionController.mostrarDatosInformes(); // Ver todos los informes
+                                }break;
                             }
                         }
                     }

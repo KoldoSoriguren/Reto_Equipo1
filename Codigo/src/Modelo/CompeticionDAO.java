@@ -123,11 +123,10 @@ public class CompeticionDAO {
         if (listaGanador.length() == 0) {
             listaGanador.append("No se ha encontrado la competición");
         }
-
         return listaGanador;
     }
 
-    public StringBuilder listaInforme() {
+    public StringBuilder listarInformes() {
         StringBuilder listaInforme = new StringBuilder();
 
         for (int i = 0; i < listaCompeticiones.size(); i++) {
@@ -142,11 +141,11 @@ public class CompeticionDAO {
 
                     if (listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos() != null) {
                         for (int k = 0; k < listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().size(); k++) {
-                            listaInforme.append("\t Enfrentamiento: ")
+                            listaInforme.append("\t Enfrentamiento ")
                                     .append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getCodEnfrentamiento())
                                     .append("\n");
 
-                            listaInforme.append("\t\t")
+                            listaInforme.append("\t\t ")
                                     .append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getEquipo1()).append("\n")
                                     .append(" vs \n")
                                     .append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getEquipo2())
@@ -157,7 +156,7 @@ public class CompeticionDAO {
                                     .append("\n");
 
                             listaInforme.append("\t\t Fecha: ")
-                                    .append(listaCompeticiones.get(i).getListaJornadas().get(j).getFechaJornada()).append("\n")
+                                    .append(listaCompeticiones.get(i).getListaJornadas().get(j).getFechaJornada())
                                     .append(" Hora: ")
                                     .append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getHora())
                                     .append("\n");
@@ -172,7 +171,6 @@ public class CompeticionDAO {
         if (listaInforme.length() == 0) {
             listaInforme.append("No se ha encontrado la competición");
         }
-
         return listaInforme;
     }
 
