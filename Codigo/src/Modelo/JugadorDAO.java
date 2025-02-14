@@ -48,13 +48,16 @@ public class JugadorDAO {
         }
         return jugador;
     }
+
     public Boolean verificarDni(String dni) {
-        boolean verificacion = true;
+        boolean verificacion;
 
-        Optional<Jugador> buscarEquip = listaJugadores.stream().filter(equipo -> equipo.getDni().equals(dni)).findFirst();
+        Optional<Jugador> buscarJugador = listaJugadores.stream().filter(equipo -> equipo.getDni().equals(dni)).findFirst();
 
-        if (buscarEquip.isPresent())
+        if (buscarJugador.isPresent())
             verificacion = false;
+        else
+            verificacion = true;
 
         return verificacion;
     }
