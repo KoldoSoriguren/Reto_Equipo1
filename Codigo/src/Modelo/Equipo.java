@@ -9,6 +9,7 @@ public class Equipo {
     private LocalDate fechaFund;
     private ArrayList<Jugador> listaJugadores;
 
+    // Constructor:
     public Equipo(String codEquipo, String nombreEquipo, LocalDate fechaFund) {
         this.codEquipo = codEquipo;
         this.nombreEquipo = nombreEquipo;
@@ -16,6 +17,7 @@ public class Equipo {
         this.listaJugadores = new ArrayList<>();
     }
 
+    // Getters and Setters:
     public String getCodEquipo() {
         return codEquipo;
     }
@@ -56,6 +58,7 @@ public class Equipo {
         this.listaJugadores.remove(jugador);
     }
 
+    // To String:
     @Override
     public String toString() {
         return "Código Equipo -> " + codEquipo + "\n " +

@@ -1,10 +1,10 @@
 package Modelo;
 
-import Excepcion.DatoNoValido;
-
 import java.time.LocalDate;
 
 public class Jugador {
+
+    // Atributos:
     private String dni;
     private String nombre;
     private String apellidos;
@@ -15,6 +15,7 @@ public class Jugador {
     private double sueldo;
     private Equipo equipo;
 
+    // Constructor:
     public Jugador(String codJugador, String nombre, String apellido, String nacionalidad, LocalDate fechaNacimiento,
                    String nickname, Roles rol, double sueldo, Equipo equipo) {
         this.dni = codJugador;
@@ -28,8 +29,7 @@ public class Jugador {
         this.equipo = equipo;
     }
 
-
-    //    Getter and Setter:
+    // Getters and Setters:
     public String getDni() {
         return dni;
     }
@@ -102,6 +102,7 @@ public class Jugador {
         this.equipo = equipo;
     }
 
+    // To String:
     @Override
     public String toString() {
         return "dni -> " + dni  + "\n " +

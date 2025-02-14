@@ -1,9 +1,5 @@
 package Modelo;
 
-import javax.swing.*;
-import java.time.DateTimeException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -11,10 +7,12 @@ public class JugadorDAO {
     private final ArrayList<Jugador> listaJugadores;
     EquipoDAO equipoDAO = new EquipoDAO();
 
+    // Constructor:
     public JugadorDAO() {
         listaJugadores = new ArrayList<>();
     }
 
+    // Funciones:
     public void agregarJugador(Jugador j) {
         listaJugadores.add(j);
     }
@@ -49,6 +47,7 @@ public class JugadorDAO {
         return jugador;
     }
 
+    // Verificaciones:
     public Boolean verificarDni(String dni) {
         boolean verificacion;
 
@@ -61,6 +60,4 @@ public class JugadorDAO {
 
         return verificacion;
     }
-
-
 }
