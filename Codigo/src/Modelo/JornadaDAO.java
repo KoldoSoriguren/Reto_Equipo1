@@ -77,6 +77,15 @@ public class JornadaDAO {
         }
     }
 
+    public Jornada buscarJornadaPorCod(String codJornada) {
+        for (Jornada j : listaJornadas) {
+            if (j.getCodJornada().equalsIgnoreCase(codJornada)) {
+                return j;
+            }
+        }
+        return null;
+    }
+
     public List<Jornada> getJornadasPorEquipo(Equipo equipo) {
         return listaJornadas.stream()
                 .filter(jornada -> jornada.contieneEquipo(equipo))

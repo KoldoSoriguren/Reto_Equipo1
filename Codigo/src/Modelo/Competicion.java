@@ -1,38 +1,61 @@
 package Modelo;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Competicion {
-    private String cod_compe;
-    private Date fecha_compe;
+    private String codCompe;
+    private String nombre;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
     private String estado;
-    private Date fecha_fin;
-    private Jornada jornada;
-    public Competicion() {
+    private ArrayList<Jornada> listaJornadas;
 
-    }
 
-    public Competicion(String cod_compe, Date fecha_fin, String estado, Date fecha_compe) {
-        this.cod_compe = cod_compe;
-        this.fecha_fin = fecha_fin;
+    public Competicion(String codCompe, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String estado) {
+        this.codCompe = codCompe;
+        this.nombre = nombre;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
         this.estado = estado;
-        this.fecha_compe = fecha_compe;
+        this.listaJornadas = new ArrayList<>();
     }
 
-    public String getCod_compe() {
-        return cod_compe;
+    public void agregarJornada(Jornada jornada) {
+        listaJornadas.add(jornada);
     }
 
-    public void setCod_compe(String cod_compe) {
-        this.cod_compe = cod_compe;
+//    Getter and Setter
+    public String getCodCompe() {
+        return codCompe;
     }
 
-    public Date getFecha_fin() {
-        return fecha_fin;
+    public void setCodCompe(String codCompe) {
+        this.codCompe = codCompe;
     }
 
-    public void setFecha_fin(Date fecha_fin) {
-        this.fecha_fin = fecha_fin;
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFecha_inicia(LocalDate fecha_inicia) {
+        this.fechaInicio = fecha_inicia;
+    }
+
+    public LocalDate getFecha_fin() {
+        return fechaFin;
+    }
+
+    public void setFecha_fin(LocalDate fecha_fin) {
+        this.fechaFin = fecha_fin;
     }
 
     public String getEstado() {
@@ -43,11 +66,11 @@ public class Competicion {
         this.estado = estado;
     }
 
-    public Date getFecha_compe() {
-        return fecha_compe;
+    public ArrayList<Jornada> getListaJornadas() {
+        return listaJornadas;
     }
 
-    public void setFecha_compe(Date fecha_compe) {
-        this.fecha_compe = fecha_compe;
+    public void setListaJornadas(ArrayList<Jornada> listaJornadas) {
+        this.listaJornadas = listaJornadas;
     }
 }

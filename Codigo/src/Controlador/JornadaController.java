@@ -5,7 +5,6 @@ import Modelo.*;
 import javax.swing.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 public class JornadaController {
     private final JornadaDAO jornadaDAO;

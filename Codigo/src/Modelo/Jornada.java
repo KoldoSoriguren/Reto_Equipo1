@@ -7,7 +7,6 @@ import java.util.List;
 public class Jornada {
     private String codJornada;
     private LocalDate fechaJornada;
-    private Competicion competicion;
     private List<Enfrentamiento> listaEnfrentamientos;
 
     public Jornada() {
@@ -48,6 +47,7 @@ public class Jornada {
         this.listaEnfrentamientos = listaEnfrentamientos;
     }
 
+    //    Funciones:
     public boolean contieneEquipo(Equipo equipo) {
         return listaEnfrentamientos.stream().anyMatch(e -> e.participaEquipo(equipo));
     }

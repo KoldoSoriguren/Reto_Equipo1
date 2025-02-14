@@ -36,14 +36,14 @@ public class Main {
         jugadorDAO = new JugadorDAO();
         jugadorController = new JugadorController(jugadorDAO, equipoDAO);
 
-        competicionDAO = new CompeticionDAO();
-        competicionController = new CompeticionController(competicionDAO);
-
         enfrentamientoDAO = new EnfrentamientoDAO();
         enfrentamientoController = new EnfrentamientoController(enfrentamientoDAO);
 
         jornadaDAO = new JornadaDAO();
         jornadaController = new JornadaController(jornadaDAO, equipoDAO, enfrentamientoDAO);
+
+        competicionDAO = new CompeticionDAO();
+        competicionController = new CompeticionController(competicionDAO, jornadaDAO);
     }
 
     public static void menu() throws DatoNoValido {
@@ -181,10 +181,11 @@ public class Main {
                                                     int opcion011 = Arrays.asList(menuOptsCrudOptsCompeticion).indexOf(opcionStr011);
 
                                                     switch (opcion011) {
-//                                                        case 0 -> //TODO Nueva Competición
-//                                                        case 1 -> //TODO Borrar Competición
-//                                                        case 2 -> //TODO Modificar Competición
-//                                                        case 3 -> //TODO Mostrar Competición
+                                                        case 0 -> competicionController.agregarCompeticion();
+                                                        case 1 -> competicionController.eliminarCompeticion();
+                                                        case 2 -> competicionController.modificarCompeticion();
+                                                        case 3 -> competicionController.mostrarCompeticiones();
+
                                                     }
                                                 }
                                             }
@@ -214,9 +215,9 @@ public class Main {
                             int opcion1 = Arrays.asList(menuOptsTipoUsuario).indexOf(opcionStr1);
 
                             switch (opcion1) {
-                                case 0 ->
-                                        jornadaController.buscarJornadasPorEquipo(); // Visualizar equipo con sus jornadas
-//                                case 1 -> //TODO Visualizar resultados
+
+                                case 0 -> jornadaController.buscarJornadasPorEquipo(); // Visualizar equipo con sus jornadas
+                               case 1 -> competicionController.visualicarRes(); //TODO Visualizar resultados
                             }
                         }
                     }
