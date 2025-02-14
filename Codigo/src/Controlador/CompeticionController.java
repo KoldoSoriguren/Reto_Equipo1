@@ -146,7 +146,15 @@ public class CompeticionController {
         JOptionPane.showMessageDialog(null, lista);
     }
 
-    public String validarDato(String dato, String mensaje, String exprRegular) {
+
+    public void mostrarDatosInformes(){
+        StringBuilder lista = competicionDAO.listarInformes();
+
+        JOptionPane.showMessageDialog(null, lista);
+    }
+
+    public String validarDato(String dato,String mensaje, String exprRegular){
+
         String variable = "";
         boolean continuar = true;
 

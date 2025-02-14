@@ -4,7 +4,6 @@ import java.time.LocalTime;
 
 public class Enfrentamiento {
     private String codEnfrentamiento;
-    private String string;
     private LocalTime hora;
     private String resultado;
     private Equipo equipo1;
@@ -32,14 +31,6 @@ public class Enfrentamiento {
 
     public void setCodEnfrentamiento(String codEnfrentamiento) {
         this.codEnfrentamiento = codEnfrentamiento;
-    }
-
-    public String getString() {
-        return string;
-    }
-
-    public void setString(String string) {
-        this.string = string;
     }
 
     public LocalTime getHora() {

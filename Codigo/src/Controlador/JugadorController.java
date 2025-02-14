@@ -22,12 +22,18 @@ public class JugadorController {
 
     public void altaValidarDatosJugador() {
 
-        String codJugador = solicitarDatos("Dni", "Ingrese el dni del jugador", "^[0-9]{8}[A-Z]$");
+        String dni = solicitarDatos("Dni", "Ingrese el dni del jugador", "^[0-9]{8}[A-Z]$");
         String nombre = solicitarDatos("Nombre", "Ingrese el nombre del jugador", "^[A-Z][a-z]+(?:\\s[A-Z][a-z]+)*$");
         String apellido = solicitarDatos("Apellidos", "Ingrese los apellidos del jugador", "^[A-Z][a-z]+(?:\\s[A-Z][a-z]+)*$");
         String nacionalidad = solicitarDatos("Nacionalidad", "Ingrese el nacionalidad del jugador", "^[A-Z][a-z]*$");
         LocalDate fechaNac = formatearFecha(solicitarDatos("Fecha de Nacimiento", "Ingrese el fecha del nacimiento del jugador dd/MM/yyyy", "^(0[1-9]|(1|2)[0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$"));
         String nickname = solicitarDatos("Nickname", "Ingrese el nickname del jugador", "^[A-Z][a-z]+(?:\\s[A-Z][a-z]+)*$");
+
+        double sueldo;
+        do {
+            String mensaje = "Introduce el sueldo del jugador";
+            sueldo = solicitarSueldo(mensaje);
+        } while (sueldo < 1184);
 
         Roles rol;
         do {
@@ -35,18 +41,40 @@ public class JugadorController {
             rol = solicitarRol(mensaje);
         } while (rol == null);
 
-        double sueldo = Double.parseDouble(solicitarDatos("Sueldo", "Ingrese el sueldo del jugador", "^[0-9]+(\\.[0-9]{1,2})?$"));
-
         Equipo equipo;
         do {
             String mensaje = "Introduce el código del equipo en el que deseas introducir el jugador";
             equipo = solicitarEquipo(mensaje);
         } while (equipo == null);
 
-        Jugador j = new Jugador(codJugador, nombre, apellido, nacionalidad, fechaNac, nickname, rol, sueldo, equipo);
+        boolean verificacion = jugadorDAO.verificarDni(dni);
+        Jugador jugador = new Jugador(dni, nombre, apellido, nacionalidad, fechaNac, nickname, rol, sueldo, equipo);
 
-        equipoDAO.agregarJugador(j);
-        jugadorDAO.agregarJugador(j);
+        if (verificacion) {
+            equipoDAO.agregarJugador(jugador);
+            jugadorDAO.agregarJugador(jugador);
+        } else
+            JOptionPane.showMessageDialog(null, "Ya hay un jugador registrado con ese dni");
+
+    }
+
+    public double solicitarSueldo(String mensaje) {
+        double sueldo = 0;
+        boolean correcto;
+
+        do {
+            try {
+                sueldo = Double.parseDouble(solicitarDatos("Sueldo", mensaje, "^[0-9]+(\\.[0-9]{1,2})?$"));
+                if (sueldo >= 1184)
+                    correcto = true;
+                else
+                    throw new DatoNoValido("El sueldo no puede ser inferior al SMI (1184 €)");
+            } catch (DatoNoValido e) {
+                correcto = false;
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+        } while (!correcto);
+        return sueldo;
     }
 
     public Roles solicitarRol(String mensaje) {
@@ -138,13 +166,13 @@ public class JugadorController {
 
     public void mostrarJugador() {
         String cod = JOptionPane.showInputDialog("Ingrese el código del jugador que quieres ver");
-        Jugador j = jugadorDAO.mostrarJugador(cod);
+        Jugador jugador = jugadorDAO.mostrarJugador(cod);
 
-        if (j == null) {
+        if (jugador == null)
             JOptionPane.showMessageDialog(null, "El jugador no existe");
-        } else {
-            JOptionPane.showMessageDialog(null, j.toString());
-        }
+        else
+            JOptionPane.showMessageDialog(null, jugador);
+
     }
 
     public void modificarJugador() {
@@ -165,58 +193,51 @@ public class JugadorController {
             if (jugadorAtrModificar != null) {
                 switch (jugadorAtrModificar) {
                     case "Nombre":
-                        jugadorElegido.setNombre(solicitarDatos("Nombre", "Introduce el nuevo nombre del jugador", "^[A-Z][a-z]+(?:\\s[A-Z][a-z]+)*$"));
+                        jugadorElegido.setNombre(solicitarDatos("Nombre", "Introduce el nuevo nombre del jugador: " + jugadorElegido.getDni(), "^[A-Z][a-z]+(?:\\s[A-Z][a-z]+)*$"));
                         break;
                     case "Apellidos":
-                        jugadorElegido.setApellidos(solicitarDatos("Apellidos", "Introduce los nuevos Apellidos del jugador", "^[A-Z][a-z]+(?:\\s[A-Z][a-z]+)*$"));
+                        jugadorElegido.setApellidos(solicitarDatos("Apellidos", "Introduce los nuevos Apellidos del jugador: " + jugadorElegido.getDni(), "^[A-Z][a-z]+(?:\\s[A-Z][a-z]+)*$"));
                         break;
                     case "Fecha de nacimiento":
-                        jugadorElegido.setFechaNacimiento(formatearFecha(solicitarDatos("Fecha de Nacimiento", "Ingrese la nueva fecha del nacimiento del jugador dd/MM/yyyy", "^(0[1-9]|(1|2)[0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$")));
+                        jugadorElegido.setFechaNacimiento(formatearFecha(solicitarDatos("Fecha de Nacimiento", "Ingrese la nueva fecha del nacimiento del jugador: " + jugadorElegido.getNombre() + jugadorElegido.getApellidos() + " (dd/MM/yyyy)", "^(0[1-9]|(1|2)[0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$")));
                         break;
                     case "Nacionalidad":
-                        jugadorElegido.setNacionalidad(solicitarDatos("Nacionalidad", "Introduce la nuevo Nacionalidad del jugador", "^[A-Z][a-z]+(?:\\s[A-Z][a-z]+)*$"));
+                        jugadorElegido.setNacionalidad(solicitarDatos("Nacionalidad", "Introduce la nuevo Nacionalidad del jugador: " + jugadorElegido.getNombre() + jugadorElegido.getApellidos(), "^[A-Z][a-z]+(?:\\s[A-Z][a-z]+)*$"));
                         break;
                     case "Rol":
                         Roles rol;
                         do {
-                            String mensaje = "Introduce el nuevo rol del jugador";
+                            String mensaje = "Introduce el nuevo rol del jugador: " + jugadorElegido.getNombre() + jugadorElegido.getApellidos();
                             rol = solicitarRol(mensaje);
                         } while (rol == null);
+                        jugadorElegido.setRol(rol);
                     case "Nickname":
-                        jugadorElegido.setNickname(solicitarDatos("Nickname", "Introduce el nuevo Nickname del jugador", "^[A-Z][a-z]+(?:\\s[A-Z][a-z]+)*$"));
+                        jugadorElegido.setNickname(solicitarDatos("Nickname", "Introduce el nuevo Nickname del jugador: " + jugadorElegido.getNombre() + jugadorElegido.getApellidos(), "^[A-Z][a-z]+(?:\\s[A-Z][a-z]+)*$"));
                         break;
                     case "Sueldo":
-                        jugadorElegido.setSueldo(Double.parseDouble(solicitarDatos("Sueldo", "Ingrese el sueldo del jugador", "^[0-9]+(\\.[0-9]{1,2})?$")));
+                        double sueldo;
+                        do {
+                            String mensaje = "Introduce el nuevo sueldo del jugador: " + jugadorElegido.getNombre() + jugadorElegido.getApellidos();
+                            sueldo = solicitarSueldo(mensaje);
+                        } while (sueldo < 1184);
+                        jugadorElegido.setSueldo(sueldo);
                         break;
                     case "Equipo":
                         Equipo equipo;
                         do {
-                            String mensaje = "Introduce el código del equipo en el que deseas introducir el jugador";
+                            String mensaje = "Introduce el código del equipo en el que deseas introducir el jugador: " + jugadorElegido.getNombre() + jugadorElegido.getApellidos();
                             equipo = solicitarEquipo(mensaje);
                         } while (equipo == null);
+                        jugadorElegido.setEquipo(equipo);
                         break;
                 }
             }
         }
     }
 
-
     //    Validaciones:
     public LocalDate formatearFecha(String fecha) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return LocalDate.parse(fecha, formatter);
-    }
-
-    public Roles validarRol(String rol) {
-        try {
-            if (rol.isEmpty()) {
-                throw new DatoNoValido("El rol es obligatorio");
-            }
-            return Roles.valueOf(rol.toUpperCase());
-
-        } catch (DatoNoValido e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-        return null;
     }
 }

@@ -28,18 +28,6 @@ public class Jugador {
         this.equipo = equipo;
     }
 
-    public Jugador() {
-    }
-
-    //    Funciones:
-    private Roles validarRol(String rolIngresado) {
-        for (Roles r : Roles.values()) {
-            if (r.name().equalsIgnoreCase(rolIngresado)) {
-                return r;
-            }
-        }
-        throw new IllegalArgumentException("Rol no válido: " + rolIngresado);
-    }
 
     //    Getter and Setter:
     public String getDni() {
@@ -102,16 +90,8 @@ public class Jugador {
         return sueldo;
     }
 
-    public double setSueldo(double sueldo) {
-        try {
-            if (sueldo >= 1184)
-                this.sueldo = sueldo;
-            else
-                throw new DatoNoValido("El sueldo no puede ser inferior al SMI (1184 €)");
-        } catch (DatoNoValido e) {
-            this.sueldo = sueldo;
-        }
-        return sueldo;
+    public void setSueldo(double sueldo) {
+        this.sueldo = sueldo;
     }
 
     public Equipo getEquipo() {
@@ -120,5 +100,19 @@ public class Jugador {
 
     public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
+    }
+
+    @Override
+    public String toString() {
+        return "dni -> " + dni  + "\n " +
+                "nombre -> " + nombre  + "\n " +
+                "apellidos -> " + apellidos  + "\n " +
+                "nacionalidad -> " + nacionalidad  + "\n " +
+                "fechaNacimiento -> " + fechaNacimiento  + "\n " +
+                "nickname -> " + nickname  + "\n " +
+                "rol -> " + rol  + "\n " +
+                "sueldo -> " + sueldo  + "\n " +
+                "equipo -> " + equipo + "\n "
+                ;
     }
 }
