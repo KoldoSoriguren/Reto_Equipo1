@@ -11,11 +11,6 @@ public class EquipoDAO {
     // Constructor:
     public EquipoDAO() {
         this.listaEquipos = new ArrayList<>();
-        listaEquipos.add(new Equipo("1234", "Team A", LocalDate.of(2000, 5, 15)));
-        listaEquipos.add(new Equipo("E2", "Team B", LocalDate.of(2005, 8, 23)));
-        listaEquipos.add(new Equipo("E3", "Team C", LocalDate.of(2010, 3, 10)));
-        listaEquipos.add(new Equipo("E4", "Team D", LocalDate.of(2015, 12, 1)));
-//        listaEquipos.add(new Equipo("E5", "Team E", LocalDate.of(2020, 7, 7)));
     }
 
     // Funciones:
