@@ -211,7 +211,7 @@ public class Main {
 
                             switch (opcion1) {
                                 case 0 -> jornadaController.buscarJornadasPorEquipo(); // Visualizar equipo con sus jornadas
-//                                case 1 -> //TODO Visualizar resultados
+                               case 1 -> competicionController.visualicarRes(); //TODO Visualizar resultados
                             }
                         }
                     }
