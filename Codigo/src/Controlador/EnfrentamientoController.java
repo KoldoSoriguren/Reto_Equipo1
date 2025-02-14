@@ -4,7 +4,6 @@ import Modelo.Enfrentamiento;
 import Modelo.EnfrentamientoDAO;
 
 import javax.swing.*;
-import java.util.Arrays;
 import java.util.List;
 
 public class EnfrentamientoController {

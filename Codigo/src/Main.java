@@ -35,14 +35,14 @@ public class Main {
         jugadorDAO = new JugadorDAO();
         jugadorController = new JugadorController(jugadorDAO, equipoDAO);
 
-        competicionDAO = new CompeticionDAO();
-        competicionController = new CompeticionController(competicionDAO);
-
         enfrentamientoDAO = new EnfrentamientoDAO();
         enfrentamientoController = new EnfrentamientoController(enfrentamientoDAO);
 
         jornadaDAO = new JornadaDAO();
         jornadaController = new JornadaController(jornadaDAO, equipoDAO, enfrentamientoDAO);
+
+        competicionDAO = new CompeticionDAO();
+        competicionController = new CompeticionController(competicionDAO, jornadaDAO);
     }
 
     public static void menu() {

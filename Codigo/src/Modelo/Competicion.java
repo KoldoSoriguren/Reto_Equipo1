@@ -2,52 +2,60 @@ package Modelo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Competicion {
-    private String cod_compe;
+    private String codCompe;
     private String nombre;
-    private LocalDate fecha_inicia;
-    private LocalDate fecha_fin;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
     private String estado;
     private ArrayList<Jornada> listaJornadas;
 
 
-    public Competicion(String cod_compe,String nombre, LocalDate fecha_inicia, LocalDate fecha_fin, String estado) {
-        this.cod_compe = cod_compe;
+    public Competicion(String codCompe, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String estado) {
+        this.codCompe = codCompe;
         this.nombre = nombre;
-        this.fecha_inicia = fecha_inicia;
-        this.fecha_fin = fecha_fin;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
         this.estado = estado;
+        this.listaJornadas = new ArrayList<>();
     }
 
-    public String getCod_compe() {
-        return cod_compe;
+    public void agregarJornada(Jornada jornada) {
+        listaJornadas.add(jornada);
     }
 
-    public void setCod_compe(String cod_compe) {
-        this.cod_compe = cod_compe;
+//    Getter and Setter
+    public String getCodCompe() {
+        return codCompe;
     }
+
+    public void setCodCompe(String codCompe) {
+        this.codCompe = codCompe;
+    }
+
     public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public LocalDate getFecha_inicia() {
-        return fecha_inicia;
+
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
     }
 
     public void setFecha_inicia(LocalDate fecha_inicia) {
-        this.fecha_inicia = fecha_inicia;
+        this.fechaInicio = fecha_inicia;
     }
 
     public LocalDate getFecha_fin() {
-        return fecha_fin;
+        return fechaFin;
     }
 
     public void setFecha_fin(LocalDate fecha_fin) {
-        this.fecha_fin = fecha_fin;
+        this.fechaFin = fecha_fin;
     }
 
     public String getEstado() {
@@ -64,12 +72,5 @@ public class Competicion {
 
     public void setListaJornadas(ArrayList<Jornada> listaJornadas) {
         this.listaJornadas = listaJornadas;
-    }
-
-    public void agregarJornada(Jornada j) {
-        if(listaJornadas == null) {
-            listaJornadas = new ArrayList<>();
-        }
-        listaJornadas.add(j);
     }
 }
