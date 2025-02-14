@@ -18,7 +18,7 @@ public class CompeticionController {
 
     public CompeticionController(CompeticionDAO competicionDAO, JornadaDAO jornadaDAO) {
         this.competicionDAO = competicionDAO;
-        this.jornadaDAO = new JornadaDAO();
+        this.jornadaDAO = jornadaDAO;
     }
 
     public void agregarCompeticion() {
