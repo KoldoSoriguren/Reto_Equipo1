@@ -3,6 +3,7 @@ package Modelo;
 import javax.swing.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class CompeticionDAO {
     private ArrayList<Competicion> listaCompeticiones;
@@ -120,6 +121,18 @@ public class CompeticionDAO {
             listaGanador.append("No se ha encontrado la competición");
         }
 
+
         return listaGanador;
+    }
+
+    public String modificarEstado(String cod) {
+        Optional<Competicion> compe = listaCompeticiones.stream().filter(comp -> comp.getCodCompe().equals(cod)).findFirst();
+        if (compe.isPresent()) {
+            compe.get().setEstado("inactivo");
+            return "Etapa cerrada";
+        }else{
+            return "No se ha encontrado la competicion";
+        }
+
     }
 }
