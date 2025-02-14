@@ -128,6 +128,10 @@ public class CompeticionController {
         JOptionPane.showMessageDialog(null, lista);
     }
 
+    public void mostrarInformes(){
+        competicionDAO.listaInforme();
+    }
+
     public String validarDato(String dato,String mensaje, String exprRegular){
         String variable = "";
         boolean continuar = true;

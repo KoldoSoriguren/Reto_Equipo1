@@ -182,10 +182,10 @@ public class Main {
                                 break;
                                 case 3: {
                                     enfrentamientoController.agregarResultados(); // Introducir Resultados
+                                }break;
+                                case 4: {
+                                    competicionController.mostrarInformes(); // Ver todos los informes
                                 }
-                                break;
-//                                case 4: {} //TODO Ver todos los informes
-                                // break;
                             }
                         }
                     }
