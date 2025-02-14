@@ -178,10 +178,11 @@ public class Main {
                                                     int opcion011 = Arrays.asList(menuOptsCrudOptsCompeticion).indexOf(opcionStr011);
 
                                                     switch (opcion011) {
-//                                                        case 0 -> //TODO Nueva Competición
-//                                                        case 1 -> //TODO Borrar Competición
-//                                                        case 2 -> //TODO Modificar Competición
-//                                                        case 3 -> //TODO Mostrar Competición
+                                                        case 0 -> competicionController.agregarCompeticion();
+                                                        case 1 -> competicionController.eliminarCompeticion();
+                                                        case 2 -> competicionController.modificarCompeticion();
+                                                        case 3 -> competicionController.mostrarCompeticiones();
+
                                                     }
                                                 }
                                             }
