@@ -185,7 +185,6 @@ public class Main {
                                                         case 1 -> competicionController.eliminarCompeticion();
                                                         case 2 -> competicionController.modificarCompeticion();
                                                         case 3 -> competicionController.mostrarCompeticiones();
-
                                                     }
                                                 }
                                             }
@@ -217,7 +216,7 @@ public class Main {
                             switch (opcion1) {
 
                                 case 0 -> jornadaController.buscarJornadasPorEquipo(); // Visualizar equipo con sus jornadas
-                               case 1 -> competicionController.visualicarRes(); //TODO Visualizar resultados
+                               case 1 -> competicionController.visualizarResult(); // Visualizar resultados
                             }
                         }
                     }

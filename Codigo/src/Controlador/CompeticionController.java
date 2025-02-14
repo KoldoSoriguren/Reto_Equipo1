@@ -121,6 +121,13 @@ public class CompeticionController {
         return new Competicion(cod,nombre,fecha_inicia,fecha_fin,estado);
     }
 
+    public void visualizarResult(){
+        String cod = JOptionPane.showInputDialog("Ingrese el código de la competición cuyos resultados quieres ver:");
+        StringBuilder lista = competicionDAO.listaGanador(cod);
+
+        JOptionPane.showMessageDialog(null, lista);
+    }
+
     public String validarDato(String dato,String mensaje, String exprRegular){
         String variable = "";
         boolean continuar = true;
@@ -148,17 +155,10 @@ public class CompeticionController {
         return variable;
     }
 
+//    Funciones
     public LocalDate parsearFecha(String fecha){
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return LocalDate.parse(fecha, dateTimeFormatter);
     }
-    public void visualicarRes(){
-        String codigo = JOptionPane.showInputDialog("Ingrese el codigo de la competicion cuyos resultados quieres ver:");
-        StringBuilder lista= competicionDAO.listaGanador(codigo);//crea una arraylist que rellenara en la siguiente funcion
-
-        JOptionPane.showMessageDialog(null, lista);
-
-    }
-
 }
 

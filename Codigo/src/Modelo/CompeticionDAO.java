@@ -1,6 +1,7 @@
 package Modelo;
 
 import javax.swing.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CompeticionDAO {
@@ -29,9 +30,9 @@ public class CompeticionDAO {
     public void modificarCompeticion(Competicion competicion) {
         boolean continuar = true;
 
-        while(continuar) {
-            for(Competicion comp : listaCompeticiones ) {
-                if(comp.getCodCompe().equals(competicion.getCodCompe())) {
+        while (continuar) {
+            for (Competicion comp : listaCompeticiones) {
+                if (comp.getCodCompe().equals(competicion.getCodCompe())) {
                     comp.setNombre(competicion.getNombre());
                     comp.setFecha_inicia(competicion.getFechaInicio());
                     comp.setFecha_fin(competicion.getFecha_fin());
@@ -48,13 +49,14 @@ public class CompeticionDAO {
     }
 
     public Competicion buscarCompeticion(String cod) {
-        for(Competicion competicion : listaCompeticiones) {
-            if(competicion.getCodCompe().equals(cod)) {
+        for (Competicion competicion : listaCompeticiones) {
+            if (competicion.getCodCompe().equals(cod)) {
                 return competicion;
             }
         }
         return null;
     }
+
     public void listarCompeticiones() {
         StringBuilder sbCompes = new StringBuilder("Listado de competiciones:\n\n");
 
@@ -74,36 +76,50 @@ public class CompeticionDAO {
         }
         JOptionPane.showMessageDialog(null, sbCompes.toString());
     }
-    public StringBuilder listaGanador(String codigo){
+
+    public StringBuilder listaGanador(String codigo) {
         StringBuilder listaGanador = new StringBuilder();
+
         for (int i = 0; i < listaCompeticiones.size(); i++) {
             if (listaCompeticiones.get(i).getCodCompe().equals(codigo)) {
-                listaGanador.append("Competicion ");
+                listaGanador.append("Competición: ");
                 listaGanador.append(listaCompeticiones.get(i).getNombre()).append("\n");
-                for (int j=0; j<listaCompeticiones.get(i).getListaJornadas().size(); j++) {
-                    listaGanador.append(listaCompeticiones.get(i).getListaJornadas().get(j).getCodJornada()).append("\n");
-                    for (int k=0; j<listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().size(); k++) {
-                        listaGanador.append("Enfrentamiento").append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getCodEnfrentamiento()).append("\n");
-                        listaGanador.append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getEquipo1()).append(" vs ");
-                        listaGanador.append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getEquipo2()).append("\n");
-                        listaGanador.append("Resultado").append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getResultado()).append("\n");
-                        listaGanador.append("fecha:").append(listaCompeticiones.get(i).getListaJornadas().get(j).getFechaJornada()).append("/");
-                        listaGanador.append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getHora());
 
+                if (listaCompeticiones.get(i).getListaJornadas() != null) {
+                    for (int j = 0; j < listaCompeticiones.get(i).getListaJornadas().size(); j++) {
+                        listaGanador.append(listaCompeticiones.get(i).getListaJornadas().get(j).getCodJornada()).append("\n");
+
+                        if (listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos() != null) {
+                            for (int k = 0; k < listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().size(); k++) {
+                                listaGanador.append("Enfrentamiento ")
+                                        .append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getCodEnfrentamiento())
+                                        .append("\n");
+
+                                listaGanador.append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getEquipo1())
+                                        .append(" vs ")
+                                        .append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getEquipo2())
+                                        .append("\n");
+
+                                listaGanador.append("Resultado: ")
+                                        .append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getResultado())
+                                        .append("\n");
+
+                                listaGanador.append("Fecha: ")
+                                        .append(listaCompeticiones.get(i).getListaJornadas().get(j).getFechaJornada())
+                                        .append(" / ")
+                                        .append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getHora())
+                                        .append("\n");
+                            }
+                        }
                     }
                 }
             }
-
         }
 
-
-        if(listaGanador.isEmpty()) {
-            listaGanador.append("No se ha encontrado la competicion");
+        if (listaGanador.length() == 0) {
+            listaGanador.append("No se ha encontrado la competición");
         }
+
         return listaGanador;
-
-
-
     }
-
 }
