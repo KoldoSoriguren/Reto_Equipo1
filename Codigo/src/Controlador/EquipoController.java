@@ -98,9 +98,4 @@ public class EquipoController {
 
         return variable;
     }
-
-    public void mostrarEquipo(String valor) {
-        equipoDAO.obtenerEquipo(valor);
-
-    }
 }

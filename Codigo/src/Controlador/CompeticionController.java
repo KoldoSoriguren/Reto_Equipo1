@@ -13,8 +13,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CompeticionController {
-    private CompeticionDAO competicionDAO;
-    private JornadaDAO jornadaDAO;
+    private final CompeticionDAO competicionDAO;
+    private final JornadaDAO jornadaDAO;
 
     public CompeticionController(CompeticionDAO competicionDAO, JornadaDAO jornadaDAO) {
         this.competicionDAO = competicionDAO;
@@ -72,7 +72,6 @@ public class CompeticionController {
 
             }catch (Exception e){
                 JOptionPane.showMessageDialog(null,"Error al modificar Competición");
-                continuar = true;
             }
         }
 

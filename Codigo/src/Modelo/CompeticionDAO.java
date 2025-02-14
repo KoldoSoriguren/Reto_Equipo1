@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class CompeticionDAO {
-    private ArrayList<Competicion> listaCompeticiones;
-    private ArrayList<Jornada> listaJornadas;
+    private final ArrayList<Competicion> listaCompeticiones;
+    private final ArrayList<Jornada> listaJornadas;
 
     public CompeticionDAO() {
         listaCompeticiones = new ArrayList<>();
