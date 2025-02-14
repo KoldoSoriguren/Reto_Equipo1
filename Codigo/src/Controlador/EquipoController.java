@@ -18,6 +18,7 @@ public class EquipoController {
         this.equipoDAO = equipoDAO;
     }
 
+    // Funciones:
     public void altaValidarDatosEquipo() {
         String codEquipo = solicitarDatos("Código", "Introduce el código del equipo", "^[0-9]{4}$");
         String nombre = solicitarDatos("Nombre", "Introduce el nombre del equipo", "^[A-Z][verificacion-z]+(?:\\s[A-Z][verificacion-z]+)*$");
@@ -67,12 +68,7 @@ public class EquipoController {
         JOptionPane.showMessageDialog(null, equipos);
     }
 
-    //    Funciones:
-    private LocalDate formatearFecha(String fecha) {
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return LocalDate.parse(fecha, formato);
-    }
-
+    // Solicitar:
     private String solicitarDatos(String dato, String mensaje, String exprRegular) {
         String variable = "";
         boolean terminar = false;
@@ -99,5 +95,11 @@ public class EquipoController {
         } while (!terminar);
 
         return variable;
+    }
+
+    // Validaciones:
+    private LocalDate formatearFecha(String fecha) {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return LocalDate.parse(fecha, formato);
     }
 }

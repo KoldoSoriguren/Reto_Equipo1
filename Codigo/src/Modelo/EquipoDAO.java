@@ -8,6 +8,7 @@ import java.util.Optional;
 public class EquipoDAO {
     private final ArrayList<Equipo> listaEquipos;
 
+    // Constructor:
     public EquipoDAO() {
         this.listaEquipos = new ArrayList<>();
         listaEquipos.add(new Equipo("1234", "Team A", LocalDate.of(2000, 5, 15)));
@@ -17,6 +18,7 @@ public class EquipoDAO {
 //        listaEquipos.add(new Equipo("E5", "Team E", LocalDate.of(2020, 7, 7)));
     }
 
+    // Funciones:
     public List<Equipo> obtenerEquipos() {
         return listaEquipos;
     }
@@ -61,6 +63,7 @@ public class EquipoDAO {
         buscarEquip.get().bajaJugador(jugador);
     }
 
+    // Verificaciones:
     public Boolean verificarCodigo(String codEquipo) {
         boolean verificacion;
 
