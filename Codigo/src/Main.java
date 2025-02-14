@@ -1,5 +1,4 @@
 import Controlador.*;
-import Excepcion.DatoNoValido;
 import Modelo.*;
 
 import javax.swing.*;
@@ -46,7 +45,7 @@ public class Main {
         competicionController = new CompeticionController(competicionDAO, jornadaDAO);
     }
 
-    public static void menu() throws DatoNoValido {
+    public static void menu() {
         boolean terminar = false;
 
         String[] menuOptsRoles = {
@@ -113,12 +112,9 @@ public class Main {
                                                     int opcion010 = Arrays.asList(menuOptsCrudOptsJugador).indexOf(opcionStr010);
 
                                                     switch (opcion010) {
-                                                        case 0 ->
-                                                                jugadorController.altaValidarDatosJugador(); // Alta jugador
-                                                        case 1 ->
-                                                                jugadorController.eliminarJugador(); // Eliminar jugador
-                                                        case 2 ->
-                                                                jugadorController.modificarJugador(); // Modificar jugador
+                                                        case 0 -> jugadorController.altaValidarDatosJugador(); // Alta jugador
+                                                        case 1 -> jugadorController.eliminarJugador(); // Eliminar jugador
+                                                        case 2 -> jugadorController.modificarJugador(); // Modificar jugador
                                                         case 3 -> jugadorController.mostrarJugador(); // Mostrar jugador
                                                     }
                                                 }
@@ -132,22 +128,10 @@ public class Main {
                                                     int opcion011 = Arrays.asList(menuOptsCrudOptsEquipo).indexOf(opcionStr011);
 
                                                     switch (opcion011) {
-                                                        case 0: {
-                                                            equipoController.altaValidarDatosEquipo(); // Alta equipo
-                                                        }
-                                                        break;
-                                                        case 1: {
-                                                            equipoController.borrar(); // Baja equipo
-                                                        }
-                                                        break;
-                                                        case 2: {
-                                                            equipoController.modificar(); // Modificar equipo
-                                                        }
-                                                        break;
-                                                        case 3: {
-                                                            equipoController.mostrar(); // Mostrar equipo
-                                                        }
-                                                        break;
+                                                        case 0 -> equipoController.altaValidarDatosEquipo(); // Alta equipo
+                                                        case 1 -> equipoController.borrar(); // Baja equipo
+                                                        case 2 -> equipoController.modificar(); // Modificar equipo
+                                                        case 3 -> equipoController.mostrar(); // Mostrar equipo
                                                     }
                                                 }
                                             }
@@ -165,10 +149,8 @@ public class Main {
 
                                                     switch (opcion013) {
                                                         case 0 -> jornadaController.borrarJornada(); // Borrar Jornada
-                                                        case 1 ->
-                                                                jornadaController.modificarJornada(); // Modificar Jornada
-                                                        case 2 ->
-                                                                jornadaController.mostrarJornadas(); // Mostrar Jornadas
+                                                        case 1 -> jornadaController.modificarJornada(); // Modificar Jornada
+                                                        case 2 -> jornadaController.mostrarJornadas(); // Mostrar Jornadas
                                                     }
                                                 }
                                             }
@@ -202,7 +184,9 @@ public class Main {
                                 case 3: {
                                     enfrentamientoController.agregarResultados(); // Introducir Resultados
                                 }
+                                break;
 //                                case 4: {} //TODO Ver todos los informes
+                                // break;
                             }
                         }
                     }
@@ -215,9 +199,8 @@ public class Main {
                             int opcion1 = Arrays.asList(menuOptsTipoUsuario).indexOf(opcionStr1);
 
                             switch (opcion1) {
-
                                 case 0 -> jornadaController.buscarJornadasPorEquipo(); // Visualizar equipo con sus jornadas
-                               case 1 -> competicionController.visualicarRes(); //TODO Visualizar resultados
+                                case 1 -> competicionController.visualicarRes(); //TODO Visualizar resultados
                             }
                         }
                     }
