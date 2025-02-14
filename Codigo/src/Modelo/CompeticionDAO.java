@@ -74,5 +74,36 @@ public class CompeticionDAO {
         }
         JOptionPane.showMessageDialog(null, sbCompes.toString());
     }
+    public StringBuilder listaGanador(String codigo){
+        StringBuilder listaGanador = new StringBuilder();
+        for (int i = 0; i < listaCompeticiones.size(); i++) {
+            if (listaCompeticiones.get(i).getCod_compe().equals(codigo)) {
+                listaGanador.append("Competicion ");
+                listaGanador.append(listaCompeticiones.get(i).getNombre()).append("\n");
+                for (int j=0; j<listaCompeticiones.get(i).getListaJornadas().size(); j++) {
+                    listaGanador.append(listaCompeticiones.get(i).getListaJornadas().get(j).getCodJornada()).append("\n");
+                    for (int k=0; j<listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().size(); k++) {
+                        listaGanador.append("Enfrentamiento").append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getCodEnfrentamiento()).append("\n");
+                        listaGanador.append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getEquipo1()).append(" vs ");
+                        listaGanador.append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getEquipo2()).append("\n");
+                        listaGanador.append("Resultado").append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getResultado()).append("\n");
+                        listaGanador.append("fecha:").append(listaCompeticiones.get(i).getListaJornadas().get(j).getFechaJornada()).append("/");
+                        listaGanador.append(listaCompeticiones.get(i).getListaJornadas().get(j).getListaEnfrentamientos().get(k).getHora());
+
+                    }
+                }
+            }
+
+        }
+
+
+        if(listaGanador.isEmpty()) {
+            listaGanador.append("No se ha encontrado la competicion");
+        }
+        return listaGanador;
+
+
+
+    }
 
 }
